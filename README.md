@@ -12,9 +12,11 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
 
 *I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
 
-## Contents ##
 
-- [Contents](#contents)
+---
+
+### Contents ###
+
 - [UX (User Experience)](#ux-user-experience)
   - [Project Goals](#project-goals)
   - [User Goals](#user-goals)
@@ -43,7 +45,6 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
   - [Database Design](#database-design)
     - [Collection 1](#collection-1)
     - [Collection 2](#collection-2)
-- [|  |  |  |](#------)
 - [SEO](#seo)
     - [HTML Sitemap links](#html-sitemap-links)
     - [XML Sitemap file](#xml-sitemap-file)
@@ -120,6 +121,10 @@ I achieve this by:
 - As a **site owner**, I want the user to be able to delete their account when it is no longer needed.
 - As a **site owner**, I want an ADMIN user account to administer the site content.
 
+
+
+[Back to contents](#contents)
+
 --- 
 
 ## Design Choices ##
@@ -158,9 +163,19 @@ It represents the early stages of the design process for the website as ideas st
 
 #### Final Wireframes ####
 
-The final wireframes were created using Balsamiq adapted from the original hand drawn wireframe concepts. The image shows the homepage from the site in three display sizes to demonstrate the page design and layout.
+The final wireframes were created using Balsamiq adapted from the original hand drawn wireframe concepts. The image shows the homepage from the site in three display sizes to demonstrate the responsive page design and layout.
 
-- [Homepage](wireframes/wireframes-homepage.png)
+- [Homepage](wireframes/home-page.png)
+- [Register](wireframes/register.png)
+- [Log In](wireframes/log-in.png)
+- [Book Reviews Page](wireframes/book-review-page.png)
+- [Book Page](wireframes/book-page.png)
+- [Add Review](wireframes/add-review.png)
+- [Edit Review](wireframes/edit-review.png)
+- [Manage Categories](wireframes/manage-categories.png)
+- [Add Category](wireframes/add-category.png)
+
+[Back to contents](#contents)
 
 ---  
 
@@ -232,7 +247,10 @@ The final wireframes were created using Balsamiq adapted from the original hand 
   - An online tool to find out the screen resolution on your device used for CSS @media queries
 - [Adobe Photoshop CS4](https://en.wikipedia.org/wiki/Adobe_Photoshop)
   - A raster graphics editor used to manipulate the clock face background image.
-  
+
+
+[Back to contents](#contents)
+
 ---
 
 
@@ -314,6 +332,10 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 |  |  |  |
 |  |  |  |
 |  |  |  |
+
+
+[Back to contents](#contents)
+
 ---
 
 ## SEO ##
@@ -354,6 +376,9 @@ The file was then saved in the GitHub repository root directory.
 Even though this website has a small number of pages and have navigation links on each page making the Sitemap largely unnecessary, I felt is was a good experience and good practice to add these features in.
 Note: I haven't added a robots.txt file yet but may add this in the future when I understand more about search engine optimisation techniques.
 
+
+[Back to contents](#contents)
+
 ---
 
 ## Project Management ##
@@ -388,6 +413,9 @@ Markdown syntax is used to create **"To-Do" list** style checkboxes by adding `-
 
 ![GitHub Projects - Development](static/images/github-projects-development.png)
 ![GitHub Projects - Bug Fixes](static/images/github-projects-bugfixes.png)
+
+
+[Back to contents](#contents)
 
 ---
 
@@ -433,10 +461,16 @@ The following workflow steps are used to create and update branches within Gitpo
 16. Use the `git push` on **each branch** to update the relevant GiHub Branches to the **same commit** as the **Master branch**.
 17. **Repeat steps 3 - 17 regularly** to ensure updates are **saved** and **correctly version controlled** in GitHub.
 
+
+[Back to contents](#contents)
+
 ---
 ## Testing ##
 
 - Testing information can be found in a separate [testing.md](testing.md) file.
+
+
+[Back to contents](#contents)
 
 ---
 ## Bugs ##
@@ -448,6 +482,9 @@ Open issues are managed within the [GitHub Projects section](https://github.com/
 Each branch is then **merged** into the **master branch** using a **pull request** that is **linked** to the **open issue**. Once merged, and the bug report **closed**, the branch is **deleted**.
 
 Fixed bugs and issues are marked as [closed](https://github.com/simonjvardy/the-reading-room/issues?q=is%3Aissue+is%3Aclosed).
+
+
+[Back to contents](#contents)
 
 ---
 
@@ -478,6 +515,9 @@ Cloning the-reading-room from GitHub:
 Copy the following code and input it into your terminal to clone the-reading-room:
 
 ```git clone https://github.com/simonjvardy/the-reading-room.git```
+
+
+[Back to contents](#contents)
 
 ---
 
@@ -532,5 +572,7 @@ The following websites were used as the starting point and inspiration for creat
   - [Carousel](https://materializecss.com/carousel.html) example code was copied and adapted for the home page
   - [Accordion]() example code was copied and adapted for the alarm clock settings.
   
+
+[Back to contents](#contents)
 
 ---
