@@ -195,7 +195,7 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 ### Database ###
 
-- [MongoDB](https://www.mongodb.com/)
+- [MongoDB Atlas](https://www.mongodb.com/)
   - Cloud based document-oriented database used to store the backend data.
 
 ### Libraries ###
@@ -208,13 +208,13 @@ The final wireframes were created using Balsamiq adapted from the original hand 
   - A comprehensive WSGI web application library installed with Flask
 - [PyMongo](https://pymongo.readthedocs.io/en/stable/)
   - PyMongo is a Python tool for working with MongoDB
-- [Flask-Pymongo]()
+- [Flask-Pymongo](https://flask-pymongo.readthedocs.io/en/latest/)
   - Flask-PyMongo bridges the gap between Flask and PyMongo
-- [DNSPython]()
+- [DNSPython](https://www.dnspython.org/)
   - DNS toolkit for Python
-- [click]()
+- [click](https://click.palletsprojects.com/en/7.x/)
   - Python CLI utilities installed with Flask
-- [itsdangerous]()
+- [itsdangerous](https://pypi.org/project/itsdangerous/)
   - Python utility for hash-based message authentication installed with Flask(HMAC, SHA-512)
 - [jQuery](https://jquery.com/)
   - Loaded as part of the [Materialize CSS CDN link](https://materializecss.com/getting-started.html)
