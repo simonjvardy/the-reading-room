@@ -1,0 +1,12 @@
+{
+	"_id": "ObjectId()",
+	"username": "String",
+	"password": "String",
+	"date_joined": "Date",
+	"last_login": "Timestamp",
+	"favourites": [
+		{
+		    "book_review_id": "<ObjectId>"
+		}
+	]
+}
