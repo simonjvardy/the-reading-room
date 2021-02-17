@@ -1,0 +1,21 @@
+{
+	"_id": "ObjectId()",
+	"genre": "String",
+	"title": "String",
+	"author": "String",
+	"image_url": "String",
+	"number_pages": "Integer",
+	"isbn": "String",
+	"review": "String",
+	"rating": "String",
+    "created_by": "String",
+    "favourite": "String",
+	"count": "Integer",
+	"comments": [
+		{
+		    "text": "String",
+			"created_by": "String",
+			"created_date": "Date"
+		}
+	]
+}

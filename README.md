@@ -247,6 +247,8 @@ The final wireframes were created using Balsamiq adapted from the original hand 
   - An online tool to find out the screen resolution on your device used for CSS @media queries
 - [Adobe Photoshop CS4](https://en.wikipedia.org/wiki/Adobe_Photoshop)
   - A raster graphics editor used to manipulate the clock face background image.
+- [randomkeygen.com](https://randomkeygen.com/)
+  - Random secure password & keygen generator used to create the Flask SECRET_KEY.
 
 
 [Back to contents](#contents)
