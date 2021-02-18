@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Reviews</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Extending the base template</h2>
     {% for review in reviews %}
         Genre: {{ review.genre }}<br>
         Tile: {{ review.title }}<br>
@@ -20,5 +16,5 @@
         Count: {{ review.count }}<br>
         Comments: {{ review.comments }}
     {% endfor %}  
-</body>
-</html>
+
+{% endblock %}

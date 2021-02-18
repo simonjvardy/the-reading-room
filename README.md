@@ -218,6 +218,8 @@ The final wireframes were created using Balsamiq adapted from the original hand 
   - Python utility for hash-based message authentication installed with Flask(HMAC, SHA-512)
 - [jQuery](https://jquery.com/)
   - Loaded as part of the [Materialize CSS CDN link](https://materializecss.com/getting-started.html)
+- [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+  - Templating language for Python.
 
 
 
@@ -555,6 +557,7 @@ The following websites were used as the starting point and inspiration for creat
 - [Simon Vardy](https://github.com/simonjvardy/) MS-1 & MS-2 Projects for the re-use of many ideas, site pages and code snippets.
 - [W3Schools](https://www.w3schools.com/) for just being a constant source of help and inspiration!
 - [Code Institute](https://codeinstitute.net/full-stack-software-development-diploma/) Course material for the inspiration from code-along challenges, specifically the Task Manager and Thorin Flask apps.
+- [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/) for loads of help and ideas.
 - [San Francisco State University](https://its.sfsu.edu/projects/resources) PMO Resources webpage where the original Unit Testing and UAT Testing Plan documents were sourced
 - [usersnap.com blog](https://usersnap.com/blog/user-acceptance-testing-example/) which was the inspiration for the modified UAT Testing document and wording.
 - [Richard Read](https://github.com/Readri205/MS2_Project) for project inspiration and README.md format ideas.
