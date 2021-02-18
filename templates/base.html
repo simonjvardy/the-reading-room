@@ -41,29 +41,39 @@
 <body>
 
     <header>
-        <!-- top navbar -->
-        <!-- Code adapted from Code Institute Task Manager Flask App Mini Project -->
-        <nav>
+        <!-- 
+            Top navbar.
+            Code adapted from Code Institute Task Manager Flask App Mini Project 
+            using Materialize CSS
+        -->
+        <nav class="nav-extended teal lighten-5">
             <div class="nav-wrapper">
-                <a href="#!" class="logo">The Reading Room</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <a href="{{ url_for('welcome') }}" class="brand-logo">The Reading Room</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger menu-bars right">
+                    <i class="fas fa-bars"></i>
+                </a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url_for('get_reviews') }}">Book Reviews</a></li>
                     <li><a href="#">New Review</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Manage Genres</a></li>
                     <li><a href="#">Register</a></li>
                     <li><a href="#">Log Out</a></li>
-                    <li><a class="waves-effect waves-light pill-btn btn hoverable">Log In</a></li>
+                    <li><a class="pill-btn btn">Log In</a></li>
                 </ul>
             </div>
         </nav>
-        <!-- mobile side navebar -->
+        <!-- mobile side navbar -->
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
+            <li><h4 class="">The Reading Room</h4></li>
+            <li><a href="{{ url_for('welcome') }}">Home</a></li>
+            <li><a href="{{ url_for('get_reviews') }}">Book Reviews</a></li>
+            <li><a href="#">New Review</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Manage Genres</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Log Out</a></li>
+            <li><a href="#">Log Out</a></li>
         </ul>
     </header>
 

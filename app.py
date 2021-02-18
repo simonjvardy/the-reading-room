@@ -23,6 +23,11 @@ genre = mongo.db.genre
 
 
 @app.route("/")
+@app.route("/welcome")
+def welcome():
+    return render_template("welcome.html")
+
+
 @app.route("/get_reviews")
 def get_reviews():
     reviews = book_review.find()
