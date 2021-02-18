@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Source+Sans+Pro&family=Special+Elite&display=swap');
+
+/* -------------------------------------Special Styling */
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #444;
+}
+
+/* Added to prevent the problems of elements overflowing horizontally on mobile devices */
+.row,
+.container,
+.container-fluid {
+    padding: 0px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* -------------------------------------HEADER SECTION */
+/* -------------------------------------Navbar */
+.logo {
+    font-family: 'Special Elite', serif;
+    font-size: 3rem;
+}
+
+/* -------------------------------------MAIN BODY STYLING */
+/* -------------------------------------Homepage Callout Section */
+
+
+/* -------------------------------------Hero Image Containers */
+
+
+/* -------------------------------------Buttons */
+
+.pill-btn {
+    color: #fff;
+    font-weight: bold;
+    background-color: rgb(0, 135, 115);
+    border: 1px solid rgb(0, 135, 115);
+    border-radius: 25px;
+}
+
+
