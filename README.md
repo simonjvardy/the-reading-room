@@ -571,11 +571,17 @@ The following websites were used as the starting point and inspiration for creat
 - [Colorlib](https://colorlib.com) the 404.html was made by Colorlib. Go visit their website for more awesome templates, themes and tools.
 - [Stack Overflow](https://stackoverflow.com/) For help fixing so many thing that fell over on this project!
   - [Stack Overflow](https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches) for ideas and help with GitHub branch naming conventions.
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+  - [Flashed Messages](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/) example code was copied and adapted for flashed messages.
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
+  - [Security Helpers](https://werkzeug.palletsprojects.com/en/1.0.x/utils/#module-werkzeug.security) code copied and adapted for user pasword hashing.
 - [Materialize CSS](https://materializecss.com/)
-  - [Modal]() example code was copied and adapted for the Help Page.
-  - [Form Groups]() example code was copied and adapted for many of the pages from log in to adding reviews.
+  - [Cards](https://materializecss.com/cards.html) example code was copied and adapted for the Help Page.
+  - [Forms](https://materializecss.com/)
+    - [Text Input](https://materializecss.com/text-inputs.html) example code was copied and adapted for many of the pages from log in to adding reviews.
+    - [Checkboxes](https://materializecss.com/checkboxes.html) example code was copied and adapted for sign up page.
   - [Carousel](https://materializecss.com/carousel.html) example code was copied and adapted for the home page
-  - [Accordion]() example code was copied and adapted for the alarm clock settings.
+  - [Accordion](https://materializecss.com/collapsible.html) example code was copied and adapted for the T&C & Privacy Policy pages.
   
 
 [Back to contents](#contents)

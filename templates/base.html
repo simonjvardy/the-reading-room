@@ -77,6 +77,21 @@
         </ul>
     </header>
 
+    <section>
+        <!-- Flash Message -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <div class="col s12 m6 offset-m3">
+                            <h4 class="teal lighten-5 z-depth-3 center-align">{{ message }}</h4>
+                        </div>                        
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
     <main class="container">
         {% block content %}
         {% endblock %}

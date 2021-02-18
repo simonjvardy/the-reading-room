@@ -49,14 +49,17 @@ def sign_up():
 
         sign_up = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(
+                request.form.get("password"),
+                method='pbkdf2:sha256',
+                salt_length=8)
         }
         users.insert_one(sign_up)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
+        # return redirect(url_for("profile", username=session["user"]))
 
     return render_template("sign-up.html")
 
@@ -85,7 +88,7 @@ def login():
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            # return redirect(url_for("login"))
 
     return render_template("login.html")
 

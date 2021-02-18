@@ -48,6 +48,14 @@ ul li h4 {
 /* -------------------------------------Hero Image Containers */
 
 
+
+/* -------------------------------------Flashed Messages */
+
+.flashes h4 {
+    line-height: 2;
+}
+
+
 /* -------------------------------------Buttons */
 
 .pill-btn {
