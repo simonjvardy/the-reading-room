@@ -23,12 +23,14 @@ users = mongo.db.users
 genre = mongo.db.genre
 
 
+# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/")
 @app.route("/welcome")
 def welcome():
     return render_template("welcome.html")
 
 
+# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/get_reviews")
 def get_reviews():
     reviews = book_review.find()
@@ -49,21 +51,19 @@ def sign_up():
 
         sign_up = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(
-                request.form.get("password"),
-                method='pbkdf2:sha256',
-                salt_length=8)
+            "password": generate_password_hash(request.form.get("password"))
         }
         users.insert_one(sign_up)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        # return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("profile", username=session["user"]))
 
     return render_template("sign-up.html")
 
 
+# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -88,9 +88,22 @@ def login():
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            # return redirect(url_for("login"))
+            return redirect(url_for("login"))
 
     return render_template("login.html")
+
+
+# Code adapted from CI Task Manager Flask App mini Project
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
