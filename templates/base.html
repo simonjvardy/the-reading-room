@@ -57,9 +57,9 @@
                     <li><a href="#">New Review</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Manage Genres</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Log Out</a></li>
-                    <li><a class="pill-btn btn">Log In</a></li>
+                    <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                    <li><a class="waves-effect waves-light btn pill-btn">Log Out</a></li>
+                    <li><a class="waves-effect waves-light btn pill-btn">Log In</a></li>
                 </ul>
             </div>
         </nav>
@@ -71,7 +71,7 @@
             <li><a href="#">New Review</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Manage Genres</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="{{ url_for('sign_up') }}">Register</a></li>
             <li><a href="#">Log Out</a></li>
             <li><a href="#">Log Out</a></li>
         </ul>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Sign Up</h3>
+
+    <!-- New User Sign Up Form -->
+    <div class="row">
+        <form class="col s12 m8 offset-m2">
+            <div class="card-panel z-depth-3">
+                <!-- Username input -->
+                <div class="row">                    
+                    <div class="input-field col s12">
+                        <i class="teal-text fas fa-user-plus prefix"></i>
+                        <input id="username" name="username" type="text" class="validate" required>
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <!-- Password input -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="teal-text fas fa-user-lock prefix"></i>
+                        <input id="password" name="password" type="password" class="validate" required>
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <!-- Terms & Conditions checkbox -->
+                <div class="row">
+                    <div class="col s12">
+                        <label>
+                            <input type="checkbox" required>
+                            <span>I accept the Terms of Use & Privacy Policy</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <div class="row">
+                    <button type="submit" class="col s12 btn-large">
+                        Sign Up <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>            
+
+{% endblock %}
