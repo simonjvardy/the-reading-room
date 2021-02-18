@@ -55,11 +55,11 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_reviews') }}">Book Reviews</a></li>
                     <li><a href="#">New Review</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a href="#">Manage Genres</a></li>
                     <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
                     <li><a class="waves-effect waves-light btn pill-btn">Log Out</a></li>
-                    <li><a class="waves-effect waves-light btn pill-btn">Log In</a></li>
+                    <li><a href="{{ url_for('login') }}" class="waves-effect waves-light btn pill-btn">Log In</a></li>
                 </ul>
             </div>
         </nav>
@@ -69,11 +69,11 @@
             <li><a href="{{ url_for('welcome') }}">Home</a></li>
             <li><a href="{{ url_for('get_reviews') }}">Book Reviews</a></li>
             <li><a href="#">New Review</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="#">Manage Genres</a></li>
             <li><a href="{{ url_for('sign_up') }}">Register</a></li>
             <li><a href="#">Log Out</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li><a href="{{ url_for('login') }}">Log Out</a></li>
         </ul>
     </header>
 
@@ -83,7 +83,7 @@
             {% if messages %}
                 {% for message in messages %}
                     <div class="row flashes">
-                        <div class="col s12 m6 offset-m3">
+                        <div class="col s12">
                             <h4 class="teal lighten-5 z-depth-3 center-align">{{ message }}</h4>
                         </div>                        
                     </div>
