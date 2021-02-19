@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">
+        <i class="fas fa-user-shield"></i> Privacy Policy
+    </h3>
+
+    <ul class="collapsible popout">
+        {% for private in privacy %}
+        <li>
+            <div class="collapsible-header teal lighten-5">
+                <i class="fas fa-caret-down"></i>
+                <strong>{{ private.title }}</strong>
+            </div>
+            <div class="collapsible-body">
+                {% for text in private.text %}
+                    <span>{{ text }}</span><br>
+                {% endfor %}
+            </div>
+        </li>
+        {% endfor %} 
+    </ul>
+
+{% endblock %}

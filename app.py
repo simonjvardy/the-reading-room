@@ -21,6 +21,8 @@ mongo = PyMongo(app)
 book_review = mongo.db.book_review
 users = mongo.db.users
 genre = mongo.db.genre
+privacy = mongo.db.privacy
+terms_conditions = mongo.db.terms_conditions
 
 
 # Code adapted from CI Task Manager Flask App mini Project
@@ -33,7 +35,7 @@ def welcome():
 # Code adapted from CI Task Manager Flask App mini Project
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = book_review.find()
+    reviews = list(book_review.find())
     return render_template("book-review.html", reviews=reviews)
 
 
@@ -113,6 +115,21 @@ def logout():
     flash("You have been successfully logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.route("/privacy_policy")
+def privacy_policy():
+    # render the tprivacy policy accordion text
+    privacy_list = list(privacy.find())
+    return render_template("privacy.html", privacy=privacy_list)
+
+
+@app.route("/terms_conditions_list")
+def terms_conditions_list():
+    # render the terms and conditions accordion text
+    terms_conditions_list = list(terms_conditions.find())
+    return render_template(
+        "terms-and-conditions.html", terms_conditions=terms_conditions_list)
 
 
 if __name__ == "__main__":
