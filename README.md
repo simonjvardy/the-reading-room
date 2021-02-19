@@ -555,22 +555,23 @@ The following websites were used as the starting point and inspiration for creat
 ### Acknowledgements ###
 
 - [Simon Vardy](https://github.com/simonjvardy/) MS-1 & MS-2 Projects for the re-use of many ideas, site pages and code snippets.
+- [Richard Read](https://github.com/Readri205/MS2_Project) for project inspiration and README.md format ideas.
+- [Neringa Bickmore](https://github.com/neringabickmore/scribbles) for project inspiration and README.md content ideas.
 - [W3Schools](https://www.w3schools.com/) for just being a constant source of help and inspiration!
 - [Code Institute](https://codeinstitute.net/full-stack-software-development-diploma/) Course material for the inspiration from code-along challenges, specifically the Task Manager and Thorin Flask apps.
 - [Jinja Template Designer Documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/) for loads of help and ideas.
 - [San Francisco State University](https://its.sfsu.edu/projects/resources) PMO Resources webpage where the original Unit Testing and UAT Testing Plan documents were sourced
 - [usersnap.com blog](https://usersnap.com/blog/user-acceptance-testing-example/) which was the inspiration for the modified UAT Testing document and wording.
-- [Richard Read](https://github.com/Readri205/MS2_Project) for project inspiration and README.md format ideas.
-- [Neringa Bickmore](https://github.com/neringabickmore/scribbles) for project inspiration and README.md content ideas.
-- [Frozenaught](https://github.com/Frozenaught/homechopped) for further README.md content ideas.
-- [Gary Simons](https://github.com/GarySimons/WildBunch-Florist) for further README.md content ideas.
 - [Software Testing Fundamentals (STF)](http://softwaretestingfundamentals.com/) for an excellent guide on building testing processes.
 - [Git - Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) documentation for help understanding how to manage branches in GitHub / Gitpod.
 - [digitaljhelms](https://gist.github.com/digitaljhelms/4287848) for ideas and help with GitHub branch naming conventions.
 - [GitHub](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site) Help guide on using Error 404 pages on repositories.
 - [Colorlib](https://colorlib.com) the 404.html was made by Colorlib. Go visit their website for more awesome templates, themes and tools.
+- [Tutorials Point](https://www.tutorialspoint.com/How-to-prepare-a-Python-date-object-to-be-inserted-into-MongoDB) for help with writing timestamps data to MongoDB.
 - [Stack Overflow](https://stackoverflow.com/) For help fixing so many thing that fell over on this project!
   - [Stack Overflow](https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches) for ideas and help with GitHub branch naming conventions.
+  - [Stack Overflow](https://stackoverflow.com/questions/17575276/how-can-i-print-a-mongodb-list-in-a-jinja2-template) ofr Jinja2 MongoBD list iteration help.
+  - [Stack Overflow](https://stackoverflow.com/questions/14026392/insert-current-time-into-mongo-using-pymongo) for help with writing timestamps data to MongoDB.
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
   - [Flashed Messages](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/) example code was copied and adapted for flashed messages.
 - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)

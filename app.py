@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -53,7 +54,8 @@ def sign_up():
 
         sign_up = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "date_joined": datetime.datetime.utcnow()
         }
         users.insert_one(sign_up)
 
@@ -130,6 +132,12 @@ def terms_conditions_list():
     terms_conditions_list = list(terms_conditions.find())
     return render_template(
         "terms-and-conditions.html", terms_conditions=terms_conditions_list)
+
+
+@app.route("/add_review")
+def add_review():
+    genres = genre.find().sort("genre_name", 1)
+    return render_template("add-review.html", genres=genres)
 
 
 if __name__ == "__main__":
