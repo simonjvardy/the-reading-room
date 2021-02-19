@@ -9,9 +9,14 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-tags prefix"></i>
-                    <input id="category" name="category" type="text"
-                        class="validate" required>
-                    <label for="category">Category</label>
+                    <select id="genre_name" name="genre_name" class="validate"
+                        required>
+                        <option value="" disabled selected>Choose Genre</option>
+                        {% for genre in genres %}
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="genre_name">Genre</label>
                 </div>
             </div>
             <!-- Book Title input field -->

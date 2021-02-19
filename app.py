@@ -136,7 +136,8 @@ def terms_conditions_list():
 
 @app.route("/add_review")
 def add_review():
-    return render_template("add-review.html")
+    genres = genre.find().sort("genre_name", 1)
+    return render_template("add-review.html", genres=genres)
 
 
 if __name__ == "__main__":
