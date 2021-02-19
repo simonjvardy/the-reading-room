@@ -3,47 +3,76 @@
 
     <h3 class="center-align">Add Book Review</h3>
 
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="">
+    <div class="row card-panel z-depth-3">
+        <form class="col s12" method="POST" action="">
+            <!-- Category Dropdown selector -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-tags prefix"></i>
-                    <input id="category" name="category" type="text" class="validate" required>
+                    <input id="category" name="category" type="text"
+                        class="validate" required>
                     <label for="category">Category</label>
                 </div>
+            </div>
+            <!-- Book Title input field -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-book prefix"></i>
-                    <input id="title" name="title" type="text" class="validate" required>
-                    <label for="title">Title</label>
+                    <input id="title" name="title" minlength="5" maxlength="50"
+                        type="text" class="validate" required>
+                    <label for="title">Book Title</label>
                 </div>
+            </div>
+            <!-- Author input field -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-user prefix"></i>
-                    <input id="author" name="author" type="text"
-                        class="validate" required>
+                    <input id="author" name="author" minlength="5" maxlength="50"
+                        type="text" class="validate" required>
                     <label for="author">Author</label>
                 </div>
+            </div>
+            <!-- Book Cover Image URL input field -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-image prefix"></i>
-                    <input id="image" name="image" type="text"
+                    <input id="image_url" name="image_url" type="text"
                         class="validate">
-                    <label for="image">Book Cover Image URL</label>
+                    <label for="image_url">Book Cover Image URL</label>
                 </div>
+            </div>
+            <!-- Number of Pages input field -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-file-alt prefix"></i>
-                    <input id="pages" name="pages" type="text"
+                    <input id="number_pages" name="number_pages" type="text" maxlength="5"
                         class="validate">
-                    <label for="pages">Number of Pages</label>
+                    <label for="number_pages">Number of Pages</label>
                 </div>
+            </div>
+            <!-- Book ISBN input field -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-barcode prefix"></i>
                     <input id="isbn" name="isbn" type="text" class="validate">
                     <label for="isbn">ISBN</label>
                 </div>
+            </div>
+            <!-- Book Rating input field -->
+            <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-star-half-alt prefix"></i>
                     <input id="rating" name="rating" type="text" 
                         class="validate" required>
                     <label for="rating">Rating from 0 to 5</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-align-left prefix"></i>
+                    <textarea id="review" name="review" class="materialize-textarea validate"
+                        data-length="250"></textarea>
+                    <label for="review">Book Review Text</label>
                 </div>
             </div>
         </form>
