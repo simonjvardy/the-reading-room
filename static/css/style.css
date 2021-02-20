@@ -2,7 +2,8 @@
 
 /* -------------------------------------Special Styling */
 
-body {
+body,
+.card .card-content .card-text-sm {
     font-family: 'Source Sans Pro', sans-serif;
     color: #444;
 }
@@ -81,6 +82,14 @@ h2 {
     text-overflow: ellipsis;
 }
 
+#delete {
+    background-color: rgb(97, 97, 97);
+}
+
+#delete:hover {
+    background-color: rgb(209, 0, 0);
+}
+
 .card .card-image img {
     width: 100%;
     /*height: auto;*/
@@ -103,6 +112,14 @@ h2 {
 /* -------------------------------------Media Queries */
 /* -------------------------------------Responsive Design - TABLET */
 
+/* Manage Genres Delete key colour = red for mobile devices */
+@media screen and (max-width: 1366px) {
+    #delete {
+        background-color: rgb(209, 0, 0);
+    }
+}
+
+/* Reduce the Nav Logo font for smaller device sizes */
 @media screen and (max-width: 670px) {
     nav .brand-logo {
         font-family: 'Special Elite', serif;
@@ -118,10 +135,14 @@ h2 {
         color: #000;
         margin-left: 10px;
     }
+    #delete {
+        background-color: rgb(209, 0, 0);
+    }
 }
 
 /* -------------------------------------Responsive Design - MOBILE */
 
+/* Reduce the Nav Logo font for smaller device sizes */
 @media screen and (max-width: 483px) {
     nav .brand-logo {
         font-family: 'Special Elite', serif;
