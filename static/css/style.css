@@ -7,13 +7,6 @@ body {
     color: #444;
 }
 
-/* Added to prevent the problems of elements overflowing horizontally on mobile devices */
-/*.row {
-    padding: 0px;
-    margin: 0;
-    overflow-x: hidden;
-}*/
-
 /* -------------------------------------HEADER SECTION */
 /* -------------------------------------Navbar */
 nav .brand-logo {
@@ -41,13 +34,16 @@ ul li h4 {
     margin-left: 5px;
 }
 
-/* -------------------------------------MAIN BODY STYLING */
-/* -------------------------------------Homepage Callout Section */
 
+/* -------------------------------------TEMPLATE BODY STYLING */
 
-/* -------------------------------------Hero Image Containers */
+/* -------------------------------------Common Site Styling Section */
 
-
+h3,
+h2 {
+    font-family: 'Playfair Display', Times, serif;
+    font-weight: 600;
+}
 
 /* -------------------------------------Flashed Messages */
 
@@ -55,15 +51,30 @@ ul li h4 {
     line-height: 2;
 }
 
-
 /* -------------------------------------Buttons */
 
 .pill-btn {
-    /*color: #fff;*/
     font-weight: bold;
-    /*background-color: rgb(0, 135, 115);
-    border: 1px solid rgb(0, 135, 115);*/
     border-radius: 25px;
+}
+
+/* Specifically for the manage-genres edit and delete button spacing */
+.card-action .pill-btn {
+    margin: 5px 5px;
+}
+
+/* -------------------------------------BASE.HTML Specific Section */
+
+
+
+
+/* -------------------------------------MANAGE-GENRES.HTML Specific Section */
+
+.card .card-content {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
 }
 
 

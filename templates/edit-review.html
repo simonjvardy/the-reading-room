@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Edit Book Review</h3>
+
+    <div class="row card-panel z-depth-3">
+        <form class="col s12" method="POST" action="{{ url_for('edit_review') }}">
+            <!-- Category Dropdown selector -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-tags prefix"></i>
+                    <select id="genre_name" name="genre_name" class="validate"
+                        required>
+                        <option value="" disabled selected>Choose Genre</option>
+                        {% for genre in genres %}
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="genre_name">Genre</label>
+                </div>
+            </div>
+            <!-- Book Title input field -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-book prefix"></i>
+                    <input id="title" name="title" minlength="5" maxlength="150"
+                        type="text" class="validate" required>
+                    <label for="title">Book Title</label>
+                </div>
+            </div>
+            <!-- Author input field -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-user prefix"></i>
+                    <input id="author" name="author" minlength="5" maxlength="50"
+                        type="text" class="validate" required>
+                    <label for="author">Author</label>
+                </div>
+            </div>
+            <!-- Book Cover Image URL input field -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-image prefix"></i>
+                    <input id="image_url" name="image_url" type="text"
+                        class="validate">
+                    <label for="image_url">Book Cover Image URL</label>
+                </div>
+            </div>
+            <!-- Number of Pages input field -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-file-alt prefix"></i>
+                    <input id="number_pages" name="number_pages" type="text" maxlength="5"
+                        class="validate">
+                    <label for="number_pages">Number of Pages</label>
+                </div>
+            </div>
+            <!-- Book ISBN input field -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-barcode prefix"></i>
+                    <input id="isbn" name="isbn" type="text" class="validate">
+                    <label for="isbn">ISBN</label>
+                </div>
+            </div>
+            <!-- Book Rating input field -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-star-half-alt prefix"></i>
+                    <input id="rating" name="rating" type="text" 
+                        class="validate" required>
+                    <label for="rating">Rating from 0 to 5</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="teal-text fas fa-align-left prefix"></i>
+                    <textarea id="review" name="review" class="materialize-textarea validate"
+                        data-length="250"></textarea>
+                    <label for="review">Book Review Text</label>
+                </div>
+            </div>
+            <!-- Submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large pill-btn waves-effect waves-light">
+                        Add Review <i class="fas fa-plus-square right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
