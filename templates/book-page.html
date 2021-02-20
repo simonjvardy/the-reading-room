@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for review in reviews %}
-        Genre: {{ review.genre }}<br>
-        Tile: {{ review.title }}<br>
-        Author: {{ review.author }}<br>
-        Book Cover: {{ review.image_url }}<br>
-        No. Pages: {{ review.number_pages }}<br>
-        ISBN: {{ review.isbn }}<br>
-        Review: {{ review.review }}<br>
-        Rating: {{ review.rating }}<br>
-        Created By: {{ review.created_by }}<br>
-        Favourite: {{ review.favourite }}<br>
-        Count: {{ review.count }}<br>
-        Comments: {{ review.comments }}
-    {% endfor %}
+  
+        Genre: {{ book.genre }}<br>
+        Tile: {{ book.title }}<br>
+        Author: {{ book.author }}<br>
+        Book Cover: {{ book.image_url }}<br>
+        No. Pages: {{ book.number_pages }}<br>
+        ISBN: {{ book.isbn }}<br>
+        Review: {{ book.review }}<br>
+        Rating: {{ book.rating }}<br>
+        Created By: {{ book.created_by }}<br>
+        Favourite: {{ book.favourite }}<br>
+        Count: {{ book.count }}<br>
+        Comments: {{ book.comments }}
+
 
 
 {% endblock %}

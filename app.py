@@ -40,6 +40,13 @@ def get_reviews():
     return render_template("book-review.html", reviews=reviews)
 
 
+@app.route("/book_page/<book_id>", methods=["GET", "POST"])
+def book_page(book_id):
+    # get the book review for the selected _id
+    book = book_review.find_one({"_id": ObjectId(book_id)})
+    return render_template("book-page.html", book=book)
+
+
 # Code adapted from CI Task Manager Flask App mini Project
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
@@ -121,7 +128,7 @@ def logout():
 
 @app.route("/privacy_policy")
 def privacy_policy():
-    # render the tprivacy policy accordion text
+    # render the privacy policy accordion text
     privacy_list = list(privacy.find())
     return render_template("privacy.html", privacy=privacy_list)
 
@@ -160,6 +167,7 @@ def add_review():
 
 @app.route("/get_genres")
 def get_genres():
+    # Get the list of genre names from the db
     genres = list(genre.find().sort("genre_name", 1))
     return render_template("manage-genres.html", genres=genres)
 
