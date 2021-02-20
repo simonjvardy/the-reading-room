@@ -134,8 +134,26 @@ def terms_conditions_list():
         "terms-and-conditions.html", terms_conditions=terms_conditions_list)
 
 
-@app.route("/add_review")
+@app.route("/add_review", methods=["GET", "POST"])
 def add_review():
+    if request.method == "POST":
+        review = {
+            "genre": request.form.get("genre_name"),
+            "title": request.form.get("title"),
+            "author": request.form.get("author"),
+            "image_url": request.form.get("image_url"),
+            "number_pages": request.form.get("number_pages"),
+            "isbn": request.form.get("isbn"),
+            "review": request.form.get("review"),
+            "rating": request.form.get("rating"),
+            "created_by": session["user"],
+            "favourite": "off",
+            "count": 0
+        }
+        book_review.insert_one(review)
+        flash("Review Successfully Added")
+        return redirect(url_for("get_reviews"))
+
     genres = genre.find().sort("genre_name", 1)
     return render_template("add-review.html", genres=genres)
 
