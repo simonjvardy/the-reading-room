@@ -63,12 +63,34 @@ h2 {
     margin: 5px 5px;
 }
 
-/* -------------------------------------BASE.HTML Specific Section */
+/* -------------------------------------BASE Specific Section */
 
 
 
 
-/* -------------------------------------MANAGE-GENRES.HTML Specific Section */
+
+/* -------------------------------------BOOK-REVIEW Specific Section */
+
+.card {
+    min-height: 500px;
+}
+
+.card .card-content .card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .card-image img {
+    width: 100%;
+    /*height: auto;*/
+    min-height: 350px;
+    max-height: 400px
+    
+}
+
+
+/* -------------------------------------MANAGE-GENRES Specific Section */
 
 .card .card-content {
     padding: 24px;
