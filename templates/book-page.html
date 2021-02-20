@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for review in reviews %}
+        Genre: {{ review.genre }}<br>
+        Tile: {{ review.title }}<br>
+        Author: {{ review.author }}<br>
+        Book Cover: {{ review.image_url }}<br>
+        No. Pages: {{ review.number_pages }}<br>
+        ISBN: {{ review.isbn }}<br>
+        Review: {{ review.review }}<br>
+        Rating: {{ review.rating }}<br>
+        Created By: {{ review.created_by }}<br>
+        Favourite: {{ review.favourite }}<br>
+        Count: {{ review.count }}<br>
+        Comments: {{ review.comments }}
+    {% endfor %}
+
+
+{% endblock %}

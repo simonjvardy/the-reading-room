@@ -1,20 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>Extending the base template</h2>
-    {% for review in reviews %}
-        Genre: {{ review.genre }}<br>
-        Tile: {{ review.title }}<br>
-        Author: {{ review.author }}<br>
-        Book Cover: {{ review.image_url }}<br>
-        No. Pages: {{ review.number_pages }}<br>
-        ISBN: {{ review.isbn }}<br>
-        Review: {{ review.review }}<br>
-        Rating: {{ review.rating }}<br>
-        Created By: {{ review.created_by }}<br>
-        Favourite: {{ review.favourite }}<br>
-        Count: {{ review.count }}<br>
-        Comments: {{ review.comments }}
-    {% endfor %}  
+    <h2 class="center-align">Book Reviews</h2>
+
+    <div class="row">
+        {% for review in reviews %}
+        <div class="col s12 m3">
+            <div class="card z-depth-3">
+                <div class="card-image">
+                    <img src="{{ review.image_url }}">
+                    <a href="" class="btn-floating halfway-fab waves-effect waves-light red">
+                        <i class="fas fa-book-open"></i>
+                    </a>
+                </div>
+                <div class="card-content center-align">
+                    <span class="card-title">{{ review.title }}</span>
+                    <span>{{ review.author }}</span><br>
+                    <span>{{ review.genre }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 
 {% endblock %}
