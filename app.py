@@ -62,6 +62,8 @@ def sign_up():
         sign_up = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
+            "is_admin": "off",
+            "is_super_user": "off",
             "date_joined": datetime.datetime.utcnow()
         }
         users.insert_one(sign_up)
@@ -87,6 +89,12 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+
+                # Update Last login date field
+                login = {"$set": {"last_login": datetime.datetime.utcnow()}}
+                users.update_one({"_id": existing_user["_id"]}, login)
+
+                # Wlecome message and direct to Profile page
                 flash("Welcome, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
@@ -154,6 +162,7 @@ def add_review():
             "review": request.form.get("review"),
             "rating": request.form.get("rating"),
             "created_by": session["user"],
+            "is_book_of_month": request.form.get("is_book_of_month"),
             "favourite": "off",
             "count": 0
         }
