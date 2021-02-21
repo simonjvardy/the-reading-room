@@ -5,8 +5,19 @@
         <div class="col s12 m8 offset-m2">
             <div class="card-panel z-depth-3">
                 <h3 class="center-align teal-text">
-                    {{ username }}'s Profile
+                    {{ username.username }}'s Profile
                 </h3>
+                <p>
+                    Account Type: {{ account }}
+                </p>
+                <p>
+                    <!-- Convert MongoDB datetime objects into strings -->
+                    Member Since: {{ username.date_joined.strftime("%d %B, %Y") }}
+                </p>
+                <p>
+                    <!-- Convert MongoDB datetime objects into strings -->
+                    Last Login: {{ username.last_login.strftime("%A %d %B, %Y") }}
+                </p>
             </div>
         </div>
     </div>

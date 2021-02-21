@@ -95,7 +95,7 @@ def login():
                 users.update_one({"_id": existing_user["_id"]}, login)
 
                 # Wlecome message and direct to Profile page
-                flash("Welcome, {}".format(
+                flash("Welcome Back, {}".format(
                     request.form.get("username")))
                 return redirect(url_for(
                     "profile", username=session["user"]))
@@ -116,11 +116,22 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    username = users.find_one(
+        {"username": session["user"]})
+
+    timedelta = username["last_login"] - username["date_joined"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        if username["is_admin"] == "on":
+            account = "Admin"
+        elif username["is_super_user"] == "on":
+            account = "Superuser"
+        else:
+            account = "User"
+
+        return render_template(
+            "profile.html", username=username, account=account,
+            timedelta=timedelta)
 
     return redirect(url_for("login"))
 
