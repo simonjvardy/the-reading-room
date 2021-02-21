@@ -19,11 +19,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 
 mongo = PyMongo(app)
-book_review = mongo.db.book_review
-users = mongo.db.users
-genre = mongo.db.genre
-privacy = mongo.db.privacy
-terms_conditions = mongo.db.terms_conditions
+# book_review = mongo.db.book_review
+# users = mongo.db.users
+# genre = mongo.db.genre
+# privacy = mongo.db.privacy
+# terms_conditions = mongo.db.terms_conditions
 
 
 # Code adapted from CI Task Manager Flask App mini Project
@@ -36,14 +36,14 @@ def welcome():
 # Code adapted from CI Task Manager Flask App mini Project
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = list(book_review.find())
+    reviews = list(mongo.db.book_review.find())
     return render_template("book-review.html", reviews=reviews)
 
 
 @app.route("/book_page/<book_id>", methods=["GET", "POST"])
 def book_page(book_id):
     # get the book review for the selected _id
-    book = book_review.find_one({"_id": ObjectId(book_id)})
+    book = mongo.db.book_review.find_one({"_id": ObjectId(book_id)})
     return render_template("book-page.html", book=book)
 
 
@@ -52,7 +52,7 @@ def book_page(book_id):
 def sign_up():
     if request.method == "POST":
         # check if username already exists in db
-        existing_user = users.find_one(
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -66,7 +66,7 @@ def sign_up():
             "is_super_user": "off",
             "date_joined": datetime.datetime.utcnow()
         }
-        users.insert_one(sign_up)
+        mongo.db.users.insert_one(sign_up)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
@@ -81,7 +81,7 @@ def sign_up():
 def login():
     if request.method == "POST":
         # check if username exists in db
-        existing_user = users.find_one(
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -92,7 +92,7 @@ def login():
 
                 # Update Last login date field
                 login = {"$set": {"last_login": datetime.datetime.utcnow()}}
-                users.update_one({"_id": existing_user["_id"]}, login)
+                mongo.db.users.update_one({"_id": existing_user["_id"]}, login)
 
                 # Wlecome message and direct to Profile page
                 flash("Welcome Back, {}".format(
@@ -116,7 +116,7 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
-    username = users.find_one(
+    username = mongo.db.users.find_one(
         {"username": session["user"]})
 
     timedelta = username["last_login"] - username["date_joined"]
@@ -148,16 +148,16 @@ def logout():
 @app.route("/privacy_policy")
 def privacy_policy():
     # render the privacy policy accordion text
-    privacy_list = list(privacy.find())
-    return render_template("privacy.html", privacy=privacy_list)
+    privacy = list(mongo.db.privacy.find())
+    return render_template("privacy.html", privacy=privacy)
 
 
 @app.route("/terms_conditions_list")
 def terms_conditions_list():
     # render the terms and conditions accordion text
-    terms_conditions_list = list(terms_conditions.find())
+    terms_conditions = list(mongo.db.terms_conditions.find())
     return render_template(
-        "terms-and-conditions.html", terms_conditions=terms_conditions_list)
+        "terms-and-conditions.html", terms_conditions=terms_conditions)
 
 
 @app.route("/add_review", methods=["GET", "POST"])
@@ -177,18 +177,18 @@ def add_review():
             "favourite": "off",
             "count": 0
         }
-        book_review.insert_one(review)
+        mongo.db.book_review.insert_one(review)
         flash("Review Successfully Added")
         return redirect(url_for("get_reviews"))
 
-    genres = genre.find().sort("genre_name", 1)
+    genres = mongo.db.genre.find().sort("genre_name", 1)
     return render_template("add-review.html", genres=genres)
 
 
 @app.route("/get_genres")
 def get_genres():
     # Get the list of genre names from the db
-    genres = list(genre.find().sort("genre_name", 1))
+    genres = list(mongo.db.genre.find().sort("genre_name", 1))
     return render_template("manage-genres.html", genres=genres)
 
 
@@ -198,11 +198,26 @@ def add_genre():
         new_genre = {
             "genre_name": request.form.get("genre_name")
         }
-        genre.insert_one(new_genre)
+        mongo.db.genre.insert_one(new_genre)
         flash("New Genre Added")
         return redirect(url_for("get_genres"))
 
     return render_template("add-genre.html")
+
+
+# Code adapted from CI Task Manager Flask App mini Project
+@app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
+def edit_genre(genre_id):
+    if request.method == "POST":
+        submit = {
+            "genre_name": request.form.get("genre_name")
+        }
+        mongo.db.genre.update({"_id": ObjectId(genre_id)}, submit)
+        flash("Genre Successfully Updated")
+        return redirect(url_for("get_genres"))
+
+    genre = mongo.db.genre.find_one({"_id": ObjectId(genre_id)})
+    return render_template("edit-genre.html", genre=genre)
 
 
 if __name__ == "__main__":
