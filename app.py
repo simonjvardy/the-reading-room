@@ -1,3 +1,6 @@
+# Code adapted from Code Institute Course Material
+# Task Manager Flask App mini Project
+
 import os
 import datetime
 from flask import (
@@ -19,21 +22,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 
 mongo = PyMongo(app)
-# book_review = mongo.db.book_review
-# users = mongo.db.users
-# genre = mongo.db.genre
-# privacy = mongo.db.privacy
-# terms_conditions = mongo.db.terms_conditions
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/")
 @app.route("/welcome")
 def welcome():
     return render_template("welcome.html")
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/get_reviews")
 def get_reviews():
     reviews = list(mongo.db.book_review.find())
@@ -47,7 +43,6 @@ def book_page(book_id):
     return render_template("book-page.html", book=book)
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
@@ -59,6 +54,7 @@ def sign_up():
             flash("Username already exists")
             return redirect(url_for("sign_up"))
 
+        # collect the signup form data and write to MongoDB
         sign_up = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -76,7 +72,6 @@ def sign_up():
     return render_template("sign-up.html")
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -112,15 +107,13 @@ def login():
     return render_template("login.html")
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})
 
-    timedelta = username["last_login"] - username["date_joined"]
-
+    # Check for user account type
     if session["user"]:
         if username["is_admin"] == "on":
             account = "Admin"
@@ -130,13 +123,11 @@ def profile(username):
             account = "User"
 
         return render_template(
-            "profile.html", username=username, account=account,
-            timedelta=timedelta)
+            "profile.html", username=username, account=account)
 
     return redirect(url_for("login"))
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -163,6 +154,7 @@ def terms_conditions_list():
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
+        # collect the add review form data and write to MongoDB
         review = {
             "genre": request.form.get("genre_name"),
             "title": request.form.get("title"),
@@ -195,6 +187,7 @@ def get_genres():
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     if request.method == "POST":
+        # collect the add genre form data and write to MongoDB
         new_genre = {
             "genre_name": request.form.get("genre_name")
         }
@@ -205,10 +198,10 @@ def add_genre():
     return render_template("add-genre.html")
 
 
-# Code adapted from CI Task Manager Flask App mini Project
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     if request.method == "POST":
+        # collect the edit genre form data and write to MongoDB
         submit = {
             "genre_name": request.form.get("genre_name")
         }
