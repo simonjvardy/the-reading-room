@@ -15,7 +15,7 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-
+# config MongoDB
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -51,7 +51,7 @@ def sign_up():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists", "orange lighten-3")
             return redirect(url_for("sign_up"))
 
         # collect the signup form data and write to MongoDB
@@ -66,7 +66,7 @@ def sign_up():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("Registration Successful!", "teal lighten-2")
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("sign-up.html")
@@ -91,17 +91,17 @@ def login():
 
                 # Wlecome message and direct to Profile page
                 flash("Welcome Back, {}".format(
-                    request.form.get("username")))
+                    request.form.get("username")), "teal lighten-2")
                 return redirect(url_for(
                     "profile", username=session["user"]))
 
             else:
                 # invalid password match
-                flash("Incorrect Username and/or Password")
+                flash("Incorrect Username and/or Password", "red lighten-3")
                 return redirect(url_for("login"))
         else:
             # username doesn't exist
-            flash("Incorrect Username and/or Password")
+            flash("Incorrect Username and/or Password", "red lighten-3")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -131,7 +131,7 @@ def profile(username):
 @app.route("/logout")
 def logout():
     # remove user from session cookies
-    flash("You have been successfully logged out")
+    flash("You have been successfully logged out", "light-blue lighten-3")
     session.pop("user")
     return redirect(url_for("login"))
 
@@ -170,7 +170,7 @@ def add_review():
             "count": 0
         }
         mongo.db.book_review.insert_one(review)
-        flash("Review Successfully Added")
+        flash("Review Successfully Added", "teal lighten-2")
         return redirect(url_for("get_reviews"))
 
     genres = mongo.db.genre.find().sort("genre_name", 1)
@@ -192,7 +192,7 @@ def add_genre():
             "genre_name": request.form.get("genre_name")
         }
         mongo.db.genre.insert_one(new_genre)
-        flash("New Genre Added")
+        flash("New Genre Added", "teal lighten-2")
         return redirect(url_for("get_genres"))
 
     return render_template("add-genre.html")
@@ -206,7 +206,7 @@ def edit_genre(genre_id):
             "genre_name": request.form.get("genre_name")
         }
         mongo.db.genre.update({"_id": ObjectId(genre_id)}, submit)
-        flash("Genre Successfully Updated")
+        flash("Genre Successfully Updated", "teal lighten-2")
         return redirect(url_for("get_genres"))
 
     genre = mongo.db.genre.find_one({"_id": ObjectId(genre_id)})
