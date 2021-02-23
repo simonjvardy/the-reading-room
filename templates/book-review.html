@@ -3,6 +3,9 @@
 
     <h2 class="center-align">Book Reviews</h2>
 
+    {% include 'includes/search-bar.html' ignore missing %}
+
+    {% if reviews|length > 0 %}
     <div class="row">
         {% for review in reviews %}
         <div class="col s10 offset-s1 m6 l4 xl3">
@@ -22,6 +25,14 @@
         </div>
         {% endfor %}
     </div>
+    {% else %}
+        <div class="row">
+            <div class="col s12">
+                <h3 class="z-depth-3 red-text text-darken-2 red lighten-4 center-align">No Results Found</h3>
+            </div>
+        </div>
+    {% endif %}
+    
 
 
 {% endblock %}

@@ -82,11 +82,11 @@ h2 {
     text-overflow: ellipsis;
 }
 
-#delete {
+#delete-btn {
     background-color: rgb(97, 97, 97);
 }
 
-#delete:hover {
+#delete-btn:hover {
     background-color: rgb(209, 0, 0);
 }
 
@@ -116,7 +116,7 @@ h2 {
 
 /* Manage Genres Delete key colour = red for mobile devices */
 @media screen and (max-width: 1366px) {
-    #delete {
+    #delete-btn {
         background-color: rgb(209, 0, 0);
     }
 }
@@ -137,7 +137,7 @@ h2 {
         color: #000;
         margin-left: 10px;
     }
-    #delete {
+    #delete-btn {
         background-color: rgb(209, 0, 0);
     }
 }
