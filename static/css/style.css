@@ -92,12 +92,25 @@ h2 {
 
 .card .card-image img {
     width: 100%;
-    /*height: auto;*/
-    min-height: 350px;
-    max-height: 400px
-    
+    height: 400px;  
 }
 
+/* -------------------------------------BOOK-PAGE Specific Section */
+
+.container-row {
+    margin: 20px auto;
+}
+
+#book-page-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    max-width: 261px;
+    margin-top: 3.2vh;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* -------------------------------------MANAGE-GENRES Specific Section */
 
