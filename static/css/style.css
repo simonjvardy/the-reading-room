@@ -8,6 +8,10 @@ body,
     color: #444;
 }
 
+strong {
+    font-weight: bold;
+}
+
 /* -------------------------------------HEADER SECTION */
 /* -------------------------------------Navbar */
 nav .brand-logo {

@@ -172,6 +172,11 @@ def terms_conditions_list():
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
+        # create the fake Amazon affiliate link
+        link = ("https://www.amazon.co.uk/s?k=" +
+                request.form.get("title").replace(" ", "+") +
+                "&tag=faketag")
+
         # collect the add review form data and write to MongoDB
         review = {
             "genre": request.form.get("genre_name"),
@@ -185,6 +190,7 @@ def add_review():
             "created_by": session["user"],
             "is_book_of_month": request.form.get("is_book_of_month"),
             "favourite": "off",
+            "purchase_link": link,
             "count": 0
         }
         mongo.db.book_review.insert_one(review)
