@@ -297,45 +297,85 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 - Body
 
 
-### Construction Table ###
-
-
-| Site Page | Page Section | JavaScript File |
-| :---: | --- | :---: |
-| Home | Canvas Element | clock.js |
-| Home | Alarm accordion hours selector | alarm.js |
-| Home | Alarm accordion minutes selector | alarm.js |
-| Home | Alarm accordion button | alarm.js |
-| Home | Bell icon | alarm.js |
-
-
-
 ### Database Design ###
 
 
-#### Collection 1 ####
+#### [genre collection](wireframes/data-schemas/book_review.json) ####
 
 
 | Field Description | Collection Key | Data type |
-| :---: | --- | :---: |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| --- | --- | :---: |
+| Unique ID | _id | ObjectId |
+| Genre Name | genre_name | String |
 
 
 
-#### Collection 2 ####
+#### [users collection](wireframes/data-schemas/users.json) ####
 
 
 | Field Description | Collection Key | Data type |
-| :---: | --- | :---: |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| --- | --- | :---: |
+| Unique ID | _id | ObjectId |
+| User Name | username | string |
+| SHA256 Hashed Password | password | String |
+| Sign Up Date | date_joined | Date Object |
+| Last User Login Date | last_login | Date Object |
+
+
+#### [book_review collection](wireframes/data-schemas/book_review.json) ####
+
+
+| Field Description | Collection Key | Data type |
+| --- | --- | :---: |
+| Unique ID | _id | ObjectId |
+| Genre Category | genre | String |
+| Book Title | title | String |
+| Book Author | author | String |
+| Book Cover Image URL | image_url | String |
+| Number of Pages | number_pages | Integer |
+| Book ISBN-13 Number | isbn | String |
+| Book Review Text | review | String |
+| User Book Rating | rating | String |
+| Created By username | create_by | String |
+| Upvote count | count | Integer |
+| Comments Array | comments | Array |
+| Commments Array Object | text | String |
+| Commments Array Object | created_by | String |
+| Commments Array Object | created_date | Date Object |
+
+
+#### [privacy collection](wireframes/data-schemas/privacy.json) ####
+
+
+| Field Description | Collection Key | Data type |
+| --- | --- | :---: |
+| Unique ID | _id | ObjectId |
+| Policy Section Title | title | String |
+| Section Text Array | text | Array |
+| Section Text Array Object | Index | String |
+
+
+#### [terms_conditions collection](wireframes/data-schemas/) ####
+
+
+| Field Description | Collection Key | Data type |
+| --- | --- | :---: |
+| Unique ID | _id | ObjectId |
+| Unique ID | _id | ObjectId |
+| Policy Section Title | title | String |
+| Section Text Array | text | Array |
+| Section Text Array Object | Index | String |
+
+
+
+#### Data Types ####
+
+- ObjectId
+- String
+- Int32
+- Date
+- Array
+- Object
 
 
 [Back to contents](#contents)
