@@ -2,66 +2,75 @@
 {% block content %}
 
     <div class="container z-depth-3">
+        <!-- Book Details Section -->
         <div class="row container-row">
+            <!-- Book Cover Image -->
             <div id="book-page-img" class="col s12 m6">
                 <img src="{{ book.image_url }}">
             </div>
+            <!-- Book Details Table -->
             <div class="col s12 m6">
                 <h4>{{ book.title }}</h4>
                 <table>
                     <tbody>
                         <tr>
-                            <td><i class="teal-text fas fa-tags prefix"></i> Genre:</td>
+                            <td><i class="teal-text fas fa-tags prefix"></i>&ensp;Genre:</td>
                             <td>{{ book.genre }}</td>
                         </tr>
                         <tr>
-                            <td><i class="teal-text fas fa-user prefix"></i> Author:</td>
+                            <td><i class="teal-text fas fa-user prefix"></i>&ensp;Author:</td>
                             <td>{{ book.author }}</td>
                         </tr>
                         <tr>
-                            <td><i class="teal-text fas fa-file-alt prefix"></i> Pages:</td>
+                            <td><i class="teal-text fas fa-file-alt prefix"></i>&ensp;Pages:</td>
                             <td>{{ book.number_pages }}</td>
                         </tr>
                         <tr>
-                            <td><i class="teal-text fas fa-barcode prefix"></i> ISBN:</td>
+                            <td><i class="teal-text fas fa-barcode prefix"></i>&ensp;ISBN:</td>
                             <td>{{ book.isbn }}</td>
                         </tr>
                         <tr>
-                            <td><i class="teal-text fas fa-star-half-alt prefix"></i> Rating:</td>
+                            <td><i class="teal-text fas fa-star-half-alt prefix"></i>&ensp;Rating:</td>
                             <td>{{ book.rating }}</td>
                         </tr>
                         <tr>
-                            <td><i class="teal-text fas fa-user-edit prefix"></i> Created By:</td>
+                            <td><i class="teal-text fas fa-user-edit prefix"></i>&ensp;Created By:</td>
                             <td>{{ book.created_by }}</td>
                         </tr>
                     </tbody>
                 </table>
-
-                Favourite: {{ book.favourite }}<br>
-                Count: {{ book.count }}<br>                
+                {% if book.favourite == "off" %}
+                    <i class="far fa-heart"></i>
+                {% else %}
+                    <i class="fas fa-heart"></i>
+                {% endif %}
+                <i class="fas fa-thumbs-up"></i>&ensp;{{ book.count }}<br>                
             </div>
         </div>
-        <div class="divider"></div>
+        <!-- Book Review Section -->
         <div class="row container-row">
             <div class="col s12">
+                <div class="divider"></div>
                 <div class="section">
                     <h5>Book Review</h5>
                     <p>
                         {{ book.review }}
                     </p>
                 </div>
-                
             </div>
         </div>
-        <div class="divider"></div>
+        <!-- Comments Section -->
         <div class="row container-row">
             <div class="col s12">
+                <div class="divider"></div>
                 <div class="section">
                     <h5>Comments</h5>
                     {% for comment in book.comments %}
                     <div class="divider"></div>
                     <p>
-                        Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date }}<br>
+                        Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date }}
+                    </p>
+                    <p>
                         {{ comment.text }}
                     </p>
                     {% endfor %}
