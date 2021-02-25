@@ -82,22 +82,35 @@ h2 {
     text-overflow: ellipsis;
 }
 
-#delete {
+#delete-btn {
     background-color: rgb(97, 97, 97);
 }
 
-#delete:hover {
+#delete-btn:hover {
     background-color: rgb(209, 0, 0);
 }
 
 .card .card-image img {
     width: 100%;
-    /*height: auto;*/
-    min-height: 350px;
-    max-height: 400px
-    
+    height: 400px;  
 }
 
+/* -------------------------------------BOOK-PAGE Specific Section */
+
+.container-row {
+    margin: 20px auto;
+}
+
+#book-page-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    max-width: 261px;
+    margin-top: 3.2vh;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* -------------------------------------MANAGE-GENRES Specific Section */
 
@@ -116,7 +129,7 @@ h2 {
 
 /* Manage Genres Delete key colour = red for mobile devices */
 @media screen and (max-width: 1366px) {
-    #delete {
+    #delete-btn {
         background-color: rgb(209, 0, 0);
     }
 }
@@ -137,7 +150,7 @@ h2 {
         color: #000;
         margin-left: 10px;
     }
-    #delete {
+    #delete-btn {
         background-color: rgb(209, 0, 0);
     }
 }

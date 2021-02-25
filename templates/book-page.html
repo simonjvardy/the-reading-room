@@ -1,17 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
-  
-        Genre: {{ book.genre }}<br>
-        Tile: {{ book.title }}<br>
-        Author: {{ book.author }}<br>
-        Book Cover: {{ book.image_url }}<br>
-        No. Pages: {{ book.number_pages }}<br>
-        ISBN: {{ book.isbn }}<br>
-        Review: {{ book.review }}<br>
-        Rating: {{ book.rating }}<br>
-        Created By: {{ book.created_by }}<br>
-        Favourite: {{ book.favourite }}<br>
-        Count: {{ book.count }}<br>
-        Comments: {{ book.comments }}<br>
+
+    <div class="container z-depth-3">
+        <div class="row container-row">
+            <div id="book-page-img" class="col s12 m6">
+                <img src="{{ book.image_url }}">
+            </div>
+            <div class="col s12 m6">
+                <h4>{{ book.title }}</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><i class="teal-text fas fa-tags prefix"></i> Genre:</td>
+                            <td>{{ book.genre }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="teal-text fas fa-user prefix"></i> Author:</td>
+                            <td>{{ book.author }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="teal-text fas fa-file-alt prefix"></i> Pages:</td>
+                            <td>{{ book.number_pages }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="teal-text fas fa-barcode prefix"></i> ISBN:</td>
+                            <td>{{ book.isbn }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="teal-text fas fa-star-half-alt prefix"></i> Rating:</td>
+                            <td>{{ book.rating }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="teal-text fas fa-user-edit prefix"></i> Created By:</td>
+                            <td>{{ book.created_by }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                Favourite: {{ book.favourite }}<br>
+                Count: {{ book.count }}<br>                
+            </div>
+        </div>
+        <div class="row container-row">
+            <div class="col s12">
+                <h4>Book Review container</h4>
+                <p>
+                    {{ book.review }}
+                </p>
+            </div>
+        </div>
+        <div class="row container-row">
+            <div class="col s12">
+                <h4>Comments container</h4>
+                <p>
+                    {{ book.comments }}
+                </p>
+            </div>
+        </div>
+    </div>        
 
 {% endblock %}

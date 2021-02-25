@@ -36,6 +36,13 @@ def get_reviews():
     return render_template("book-review.html", reviews=reviews)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    reviews = list(mongo.db.book_review.find({"$text": {"$search": query}}))
+    return render_template("book-review.html", reviews=reviews)
+
+
 @app.route("/book_page/<book_id>", methods=["GET", "POST"])
 def book_page(book_id):
     # get the book review for the selected _id
@@ -232,7 +239,9 @@ def edit_genre(genre_id):
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
     mongo.db.genre.remove({"_id": ObjectId(genre_id)})
-    flash("Genre Successfully Deleted", "orange lighten-3")
+    flash(
+        "Genre Successfully Deleted",
+        "orange-text text-darken-2 orange lighten-5")
     return redirect(url_for("get_genres"))
 
 
