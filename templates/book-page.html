@@ -41,20 +41,31 @@
                 Count: {{ book.count }}<br>                
             </div>
         </div>
+        <div class="divider"></div>
         <div class="row container-row">
             <div class="col s12">
-                <h4>Book Review container</h4>
-                <p>
-                    {{ book.review }}
-                </p>
+                <div class="section">
+                    <h5>Book Review</h5>
+                    <p>
+                        {{ book.review }}
+                    </p>
+                </div>
+                
             </div>
         </div>
+        <div class="divider"></div>
         <div class="row container-row">
             <div class="col s12">
-                <h4>Comments container</h4>
-                <p>
-                    {{ book.comments }}
-                </p>
+                <div class="section">
+                    <h5>Comments</h5>
+                    {% for comment in book.comments %}
+                    <div class="divider"></div>
+                    <p>
+                        Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date }}<br>
+                        {{ comment.text }}
+                    </p>
+                    {% endfor %}
+                </div>                
             </div>
         </div>
     </div>        
