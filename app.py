@@ -98,7 +98,7 @@ def login():
                 login = {"$set": {"last_login": datetime.datetime.utcnow()}}
                 mongo.db.users.update_one({"_id": existing_user["_id"]}, login)
 
-                # Wlecome message and direct to Profile page
+                # Welcome message and direct to Profile page
                 flash(
                     "Welcome Back, {}".format(request.form.get("username")),
                     "teal-text text-darken-2 teal lighten-5")
@@ -172,53 +172,76 @@ Book Review Functionality
 
 @app.route("/get_reviews")
 def get_reviews():
+    """
+    Render the Book Reviews page for all site visitors
+    """
     reviews = list(mongo.db.book_review.find())
     return render_template("book-review.html", reviews=reviews)
 
 
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
-    if request.method == "POST":
-        # create the fake Amazon affiliate link
-        link = ("https://www.amazon.co.uk/s?k=" +
-                request.form.get("title").replace(" ", "+") +
-                "&tag=faketag")
+    """
+    Render the Add Review page if a user is logged in.
+    Prevents "brute force" loading of the page and redirects
+    the site visitor to the login page if not logged in.
+    """
+    try:
+        if session["user"]:
+            if request.method == "POST":
+                # create the fake Amazon affiliate link
+                link = ("https://www.amazon.co.uk/s?k=" +
+                        request.form.get("title").replace(" ", "+") +
+                        "&tag=faketag")
 
-        # collect the add review form data and write to MongoDB
-        review = {
-            "genre": request.form.get("genre_name"),
-            "title": request.form.get("title"),
-            "author": request.form.get("author"),
-            "image_url": request.form.get("image_url"),
-            "number_pages": request.form.get("number_pages"),
-            "isbn": request.form.get("isbn"),
-            "review": request.form.get("review"),
-            "rating": request.form.get("rating"),
-            "created_by": session["user"],
-            "is_book_of_month": request.form.get("is_book_of_month"),
-            "favourite": "off",
-            "purchase_link": link,
-            "count": 0
-        }
-        mongo.db.book_review.insert_one(review)
+                # collect the add review form data and write to MongoDB
+                review = {
+                    "genre": request.form.get("genre_name"),
+                    "title": request.form.get("title"),
+                    "author": request.form.get("author"),
+                    "image_url": request.form.get("image_url"),
+                    "number_pages": request.form.get("number_pages"),
+                    "isbn": request.form.get("isbn"),
+                    "review": request.form.get("review"),
+                    "rating": request.form.get("rating"),
+                    "created_by": session["user"],
+                    "is_book_of_month": request.form.get("is_book_of_month"),
+                    "favourite": "off",
+                    "purchase_link": link,
+                    "count": 0
+                }
+                mongo.db.book_review.insert_one(review)
+                flash(
+                    "Review Successfully Added",
+                    "teal-text text-darken-2 teal lighten-5")
+                return redirect(url_for("get_reviews"))
+
+            genres = mongo.db.genre.find().sort("genre_name", 1)
+            return render_template("add-review.html", genres=genres)
+
+    except Exception:
         flash(
-            "Review Successfully Added",
-            "teal-text text-darken-2 teal lighten-5")
-        return redirect(url_for("get_reviews"))
-
-    genres = mongo.db.genre.find().sort("genre_name", 1)
-    return render_template("add-review.html", genres=genres)
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
 
 
 @app.route("/book_page/<book_id>", methods=["GET", "POST"])
 def book_page(book_id):
-    # get the book review for the selected _id
+    """
+    Get the book details for the selected book and
+    render the the Book Page template.
+    """
     book = mongo.db.book_review.find_one({"_id": ObjectId(book_id)})
     return render_template("book-page.html", book=book)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    Search function returns the book details based on the text index
+    query.
+    """
     query = request.form.get("query")
     reviews = list(mongo.db.book_review.find({"$text": {"$search": query}}))
     return render_template("book-review.html", reviews=reviews)
@@ -259,51 +282,142 @@ used in the book reviews.
 
 @app.route("/get_genres")
 def get_genres():
-    # Get the list of genre names from the db
-    genres = list(mongo.db.genre.find().sort("genre_name", 1))
-    return render_template("manage-genres.html", genres=genres)
+    """
+    Render the Manage Genres page if a user is logged in.
+    Prevents "brute force" loading of the page and redirects
+    the site visitor to the login page if not logged in.
+    """
+    try:
+        if session["user"]:
+            # Get the list of genre names from the db
+            genres = list(mongo.db.genre.find().sort("genre_name", 1))
+            return render_template("manage-genres.html", genres=genres)
+
+    except Exception:
+        flash(
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
 
 
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
-    if request.method == "POST":
-        # collect the add genre form data and write to MongoDB
-        new_genre = {
-            "genre_name": request.form.get("genre_name")
-        }
-        mongo.db.genre.insert_one(new_genre)
-        flash(
-            "New Genre Added",
-            "teal-text text-darken-2 teal lighten-5")
-        return redirect(url_for("get_genres"))
+    """
+    Render the Add Genres page if a user is logged in.
+    Prevents "brute force" loading of the page and redirects
+    the site visitor to the login page if not logged in.
+    """
+    try:
+        if session["user"]:
+            # grab the session user's details from db
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
 
-    return render_template("add-genre.html")
+            # if account is Admin or Superuser
+            if (username["is_admin"] == "on" or
+                    username["is_super_user"] == "on"):
+                if request.method == "POST":
+                    # collect the add genre form data and write to MongoDB
+                    new_genre = {
+                        "genre_name": request.form.get("genre_name")
+                    }
+                    mongo.db.genre.insert_one(new_genre)
+                    flash(
+                        "New Genre Added",
+                        "teal-text text-darken-2 teal lighten-5")
+                    return redirect(url_for("get_genres"))
+
+                return render_template("add-genre.html")
+
+            else:
+                flash(
+                    "Sorry, you are not allowed to do that!",
+                    "red-text text-darken-2 red lighten-4")
+                return redirect(url_for("get_genres"))
+
+    except Exception:
+        flash(
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
 
 
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
-    if request.method == "POST":
-        # collect the edit genre form data and write to MongoDB
-        submit = {
-            "genre_name": request.form.get("genre_name")
-        }
-        mongo.db.genre.update({"_id": ObjectId(genre_id)}, submit)
-        flash(
-            "Genre Successfully Updated",
-            "teal lighten-5 teal-text text-lighten-2")
-        return redirect(url_for("get_genres"))
+    """
+    Edit Genre function updates the selected genre category
+    in the database.
+    Restricted to logged in users with Admin or Superuser account.
+    """
+    try:
+        if session["user"]:
+            # grab the session user's details from db
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
 
-    genre = mongo.db.genre.find_one({"_id": ObjectId(genre_id)})
-    return render_template("edit-genre.html", genre=genre)
+            # Allow update db if account is Admin or Superuser
+            if (username["is_admin"] == "on" or
+                    username["is_super_user"] == "on"):
+                if request.method == "POST":
+                    # collect the edit genre form data and write to MongoDB
+                    submit = {
+                        "genre_name": request.form.get("genre_name")
+                    }
+                    mongo.db.genre.update({"_id": ObjectId(genre_id)}, submit)
+                    flash(
+                        "Genre Successfully Updated",
+                        "teal lighten-5 teal-text text-lighten-2")
+                    return redirect(url_for("get_genres"))
+
+                genre = mongo.db.genre.find_one({"_id": ObjectId(genre_id)})
+                return render_template("edit-genre.html", genre=genre)
+
+            else:
+                flash(
+                    "Sorry, you are not allowed to edit that!",
+                    "red-text text-darken-2 red lighten-4")
+                return redirect(url_for("get_genres"))
+
+    except Exception:
+        flash(
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
 
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
-    mongo.db.genre.remove({"_id": ObjectId(genre_id)})
-    flash(
-        "Genre Successfully Deleted",
-        "orange-text text-darken-2 orange lighten-5")
-    return redirect(url_for("get_genres"))
+    """
+    Delete Genre function deletes the selected genre category
+    from the database.
+    Restricted to logged in users with Admin or Superuser account.
+    """
+    try:
+        if session["user"]:
+            # grab the session user's details from db
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
+
+            #  Delete if account is Admin or Superuser
+            if (username["is_admin"] == "on" or
+                    username["is_super_user"] == "on"):
+                mongo.db.genre.remove({"_id": ObjectId(genre_id)})
+                flash(
+                    "Genre Successfully Deleted",
+                    "orange-text text-darken-2 orange lighten-5")
+                return redirect(url_for("get_genres"))
+
+            else:
+                flash(
+                    "Sorry, you are not allowed to delete that!",
+                    "red-text text-darken-2 red lighten-4")
+                return redirect(url_for("get_genres"))
+
+    except Exception:
+        flash(
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
 
 
 """

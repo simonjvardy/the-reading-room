@@ -1,20 +1,77 @@
-<div class="col-12 col-lg-4 mb-2 sitemap">
-    <h4>Sitemap</h4>
-    <span><i class="fas fa-sitemap"></i></span>
-    <ul class="list-unstyled">
-        <li><a href="{{ url_for('welcome') }}">Home</a></li>
-        <li><a href="{{ url_for('get_reviews') }}">Book Reviews</a></li>
-        {% if session.user %}
-            <li><a href="{{ url_for('add_review') }}">New Review</a></li>
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('get_genres') }}">Manage Genres</a></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-        {% else %}
-            <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-            <li><a href="{{ url_for('login') }}">Log In</a></li>
-                
-        {% endif %}
-        <li><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
-        <li><a href="{{ url_for('terms_conditions_list') }}">Terms & Conditions</a></li> 
-    </ul>
+<div class="row footer z-depth-1 teal lighten-5">
+    <div class="col s12 l4">
+        <!-- Social Media Section -->
+        <div class="divider center-align"></div>
+        <div class="section social-media icon-bg-sm">
+            <h4><i class="teal-text fas fa-at prefix"></i>&ensp;Follow</h4>
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://twitter.com/" target="_blank" rel="noreferrer">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sr-only">Instagram</span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://twitter.com/" target="_blank" rel="noreferrer">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                        <span class="sr-only">YouTube</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Sitemap section -->
+        <div class="divider"></div>
+        <div class="section sitemap">
+            <h4>Sitemap</h4>
+            <span><i class="teal-text fas fa-sitemap"></i></span>
+            <ul class="list-inline">
+                <li>
+                    <a href="{{ url_for('welcome') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('get_reviews') }}">Book Reviews</a>
+                </li>
+                {% if session.user %}
+                    <li>
+                        <a href="{{ url_for('add_review') }}">New Review</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('get_genres') }}">Manage Genres</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('logout') }}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ url_for('sign_up') }}">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('login') }}">Log In</a>
+                    </li>
+                        
+                {% endif %}
+                <li>
+                    <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('terms_conditions_list') }}">Terms & Conditions</a>
+                </li> 
+            </ul>
+        </div>
+    </div>
 </div>
