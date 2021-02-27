@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Oops! Page not found</h2>
+
+    <h3>Kindly search for another book review or click the Home button to return to home page</h3>
+    {% include 'includes/search-bar.html' ignore missing %}
+    <a class="waves-effect waves-light btn teal pill-btn"
+        href="{{ url_for('get_reviews') }}">Book Reviews</a>
+
+{% endblock %}
