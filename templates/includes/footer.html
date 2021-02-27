@@ -1,9 +1,9 @@
 <div class="row footer z-depth-1 teal lighten-5">
-    <div class="col s12 l4">
+    <div class="col s12 center-align">
         <!-- Social Media Section -->
-        <div class="divider center-align"></div>
+        <div class="divider"></div>
         <div class="section social-media icon-bg-sm">
-            <h4><i class="teal-text fas fa-at prefix"></i>&ensp;Follow</h4>
+            <h5>Follow Us</h5>
             <ul class="list-inline">
                 <li class="list-inline-item">
                     <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
@@ -34,44 +34,48 @@
         <!-- Sitemap section -->
         <div class="divider"></div>
         <div class="section sitemap">
-            <h4>Sitemap</h4>
-            <span><i class="teal-text fas fa-sitemap"></i></span>
+            <h5>Sitemap</h5>
             <ul class="list-inline">
-                <li>
+                <li class="list-inline-item">
                     <a href="{{ url_for('welcome') }}">Home</a>
                 </li>
-                <li>
+                <li class="list-inline-item">
                     <a href="{{ url_for('get_reviews') }}">Book Reviews</a>
                 </li>
                 {% if session.user %}
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{ url_for('add_review') }}">New Review</a>
                     </li>
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
                     </li>
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{ url_for('get_genres') }}">Manage Genres</a>
                     </li>
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{ url_for('logout') }}">Log Out</a>
                     </li>
                 {% else %}
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{ url_for('sign_up') }}">Sign Up</a>
                     </li>
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{ url_for('login') }}">Log In</a>
                     </li>
                         
                 {% endif %}
-                <li>
+                <li class="list-inline-item">
                     <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
                 </li>
-                <li>
+                <li class="list-inline-item">
                     <a href="{{ url_for('terms_conditions_list') }}">Terms & Conditions</a>
                 </li> 
             </ul>
+        </div>
+        <!-- Copyright statement section -->
+        <div class="divider"></div>
+        <div class="section copyright">
+            <p>© Copyright Simon Vardy, 2021. Created for educational purposes only as a coursework project submission</p>
         </div>
     </div>
 </div>

@@ -442,9 +442,7 @@ def terms_conditions_list():
         "terms-and-conditions.html", terms_conditions=terms_conditions)
 
 
-"""
-HTTP response error code handling
-"""
+"""HTTP response error code handling."""
 
 
 @app.errorhandler(404)
