@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="static/css/error.css" />
+{% endblock %}
+{% block content %}
+
+    <div id="notfound">
+		<div class="notfound">
+			<div class="notfound-error">
+				<h1>Oops!</h1>
+			</div>
+			<h2>503 - Service Unavailable</h2>
+            <p>
+                Well this is awkward.... :(
+            </p>
+            <p>
+                Something has gone wrong at our end and we're working on it.<br>
+                Please come back in a little while...
+            </p>
+            <a class="waves-effect waves-light btn-large pill-btn" 
+                href="{{ url_for('get_reviews') }}">Go To Book Reviews</a>
+        </div>
+    </div>
+
+{% endblock %}
