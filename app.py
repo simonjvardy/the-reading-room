@@ -343,6 +343,26 @@ def not_found(error):
     return render_template("/error-handling/404.html", error=error)
 
 
+@app.errorhandler(500)
+def internal_server_error(error):
+    """
+    Renders an error page for http error respons code 500
+    displaying a friendly template with a button that directs the user
+    back to the main book-review page.
+    """
+    return render_template("/error-handling/500.html", error=error)
+
+
+@app.errorhandler(503)
+def service_unavailable(error):
+    """
+    Renders an error page for http error respons code 503
+    displaying a friendly template with a button that directs the user
+    back to the main book-review page.
+    """
+    return render_template("/error-handling/503.html", error=error)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
