@@ -10,7 +10,7 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
 
 ![Responsive Layout Screenshots](static/images/am-i-responsive-placeholder.png) 
 
-*I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
+*I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The muted, almsot monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
 
 
 ---
@@ -43,8 +43,11 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
   - [Page Layout](#page-layout)
   - [Construction Table](#construction-table)
   - [Database Design](#database-design)
-    - [Collection 1](#collection-1)
-    - [Collection 2](#collection-2)
+    - [genre Collection](#genre-collection)
+    - [users Collection](#users-collection)
+    - [privacy Collection](#privacy-collection)
+    - [terms_conditions Collection](#terms_conditions-collection)
+    - [Data Types](#data-types)
 - [SEO](#seo)
     - [HTML Sitemap links](#html-sitemap-links)
     - [XML Sitemap file](#xml-sitemap-file)
@@ -59,7 +62,19 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Deployment](#deployment)
-  - [Running the-reading-room Locally](#running-the-reading-room-locally)
+  - [Cloning the-reading-room from GitHub](#cloning-the-reading-room-from-github)
+    - [Prerequisites](#prerequisites)
+    - [Cloning the GitHub repository](#cloning-the-github-repository)
+    - [Creation of a Python Virtual Environment](#creation-of-a-python-virtual-environment)
+    - [Install the App dependencies and external libraries](#install-the-app-dependencies-and-external-libraries)
+    - [Create the database in MongoDB](#create-the-database-in-mongodb)
+    - [Create `env.py` file](#create-env.py-file)
+    - [Run the application](#run-the-application)
+  - [Deploying The Reading Room app to Heroku](#deploying-the-reading-room-app-to-heroku)
+    - [Create the Heroku App](#create-the-heroku-app)
+    - [Push your repository to GitHub](#push-your-repository-to-github)
+    - [Connect Heroku to GitHub](#connect-heroku-to-github)
+    - [Launch the App](#launch-the-app)
 - [Credits](#credits)
   - [Images](#images)
   - [Colour](#colour)
@@ -158,9 +173,9 @@ different page sections without overpowering the layout and taking the focus awa
 
 ![Colour palette](wireframes/coolors-palette.png)
 
-- *Blue Green Colour Wheel* (004D40) - Dark Teal Green
-- *Persian Green* (009688) - Teal Green
-- *Azure X 11 Web Color* (E0F2F1) - Very Pale Teal Green
+- *Teal Darken-4* (004D40) - Dark Teal Green
+- *Teal* (009688) - Teal Green
+- *Teal Lighten-5* (E0F2F1) - Very Pale Teal Green
 - *White* (FFFFFF) - White
 
 
@@ -303,11 +318,15 @@ The final wireframes were created using Balsamiq adapted from the original hand 
   - A set of friendly HTTP Error landing pages for site visitors to see if a requested page is unavailable or cannot be accessed.
     - The pages provide a message to the user and a button to click to return the visitor to the homepage.
 
+    - HTTP 404 Error
       ![HTTP 404 Error](static/images/404-img.png)
       
-      Other common error codes these landing pages cover are:
-      - HTTP 500 Error - Internal Server Error
-      - HTTP 503 Error - Service Unavailable
+
+    - HTTP 500 Error
+      ![HTTP 500 Error](static/images/500-img.png)
+    
+    - HTTP 503 Error
+      ![HTTP 503 Error](static/images/503-img.png)
 
 
 ### **Future Features** ###
@@ -423,7 +442,7 @@ Search Engine Optimisation for the site was provided in three complementary ways
 The file was then saved in the GitHub repository root directory.
 
 - The following steps were used to generate the sitemap.xml file:
-  1. Visit [XML-Sitemaps.com](https://www.xml-sitemaps.com/) and enter the URL of the website https://simonjvardy.github.io/Aviation-Consultancy/
+  1. Visit [XML-Sitemaps.com](https://www.xml-sitemaps.com/) and enter the URL of the website https://the-reading-room.herokuapp.com/
   2. Click Start
   3. The site pages will automatically be scanned 
   4. Click View Sitemap Details
@@ -436,7 +455,7 @@ The file was then saved in the GitHub repository root directory.
 - The following steps were used to perform the indexing tests:
   1.  Visit [Google Search Console](https://www.google.com/webmasters/tools/home)
   2.  Click Add Property in the menu bar
-  3.  Enter the website URL https://simonjvardy.github.io/Aviation-Consultancy/
+  3.  Enter the website URL https://the-reading-room.herokuapp.com/
   4.  Click Continue
   5.  Download the unique verification file created by Google
   6.  Save the [verification file](googlef750fda78af5a952.html) in the root directory of the GitHub repository
@@ -644,9 +663,9 @@ python3 app.py
 
 ### **Deploying The Reading Room app to Heroku** ###
 
-#### Create the Heroku  ####
+#### Create the Heroku App ####
 
-*Please ensure you have an account created at [Heroku](https://signup.heroku.com/login) in order to build deploy the app*
+*Please ensure you have an account created at [Heroku](https://signup.heroku.com/login) in order to deploy the app*
 
 - Log in to your Heroku account dashboard and create a new app.
 - Enter the App name. 
@@ -673,7 +692,7 @@ pip3 freeze --local > requirements.txt
 
 - Stage, commit and push your local Git repository to GitHub
 
-#### Connect Heroku to Github ####
+#### Connect Heroku to GitHub ####
 
 - In the Heroku App Settings page, open the section Config Vars
 - Add all the environmant variables from your local `env.py` file into the Heroku Config Vars:
