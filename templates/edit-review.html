@@ -4,16 +4,21 @@
     <h3 class="center-align">Edit Book Review</h3>
 
     <div class="row card-panel z-depth-3">
-        <form class="col s12" method="POST" action="{{ url_for('edit_review') }}">
+        <form class="col s12" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
             <!-- Category Dropdown selector -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-tags prefix"></i>
                     <select id="genre_name" name="genre_name" class="validate"
                         required>
-                        <option value="" disabled selected>Choose Genre</option>
+                        <option value="" disabled>Choose Genre</option>
                         {% for genre in genres %}
-                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                            {% if genre.genre_name == review.genre_name %}
+                                <option value="{{ genre.genre_name }}"
+                                selected>{{ genre.genre_name }}</option>
+                            {% else %}
+                                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label for="genre_name">Genre</label>
@@ -24,7 +29,8 @@
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-book prefix"></i>
                     <input id="title" name="title" minlength="5" maxlength="150"
-                        type="text" class="validate" required>
+                        value="{{ review.title }}" type="text" class="validate"
+                        required>
                     <label for="title">Book Title</label>
                 </div>
             </div>
@@ -33,7 +39,8 @@
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-user prefix"></i>
                     <input id="author" name="author" minlength="5" maxlength="50"
-                        type="text" class="validate" required>
+                        value="{{ review.author }}" type="text" class="validate"
+                        required>
                     <label for="author">Author</label>
                 </div>
             </div>
@@ -42,7 +49,7 @@
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-image prefix"></i>
                     <input id="image_url" name="image_url" type="text"
-                        class="validate">
+                        value="{{ review.image_url }}" class="validate">
                     <label for="image_url">Book Cover Image URL</label>
                 </div>
             </div>
@@ -51,7 +58,7 @@
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-file-alt prefix"></i>
                     <input id="number_pages" name="number_pages" type="text" maxlength="5"
-                        class="validate">
+                        value="{{ review.number_pages }}" class="validate">
                     <label for="number_pages">Number of Pages</label>
                 </div>
             </div>
@@ -59,7 +66,8 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-barcode prefix"></i>
-                    <input id="isbn" name="isbn" type="text" class="validate">
+                    <input id="isbn" name="isbn" type="text" value="{{ review.isbn }}" 
+                        class="validate">
                     <label for="isbn">ISBN</label>
                 </div>
             </div>
@@ -68,23 +76,30 @@
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-star-half-alt prefix"></i>
                     <input id="rating" name="rating" type="text" 
-                        class="validate" required>
+                        value="{{ review.rating }}" class="validate"
+                        required>
                     <label for="rating">Rating from 0 to 5</label>
                 </div>
             </div>
+            <!-- Book Review textarea -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-align-left prefix"></i>
                     <textarea id="review" name="review" class="materialize-textarea validate"
-                        data-length="250"></textarea>
+                        data-length="250">{{ review.review }}</textarea>
                     <label for="review">Book Review Text</label>
                 </div>
             </div>
             <!-- Submit button -->
             <div class="row">
                 <div class="col s12 center-align">
+                    <!-- Cancel Button -->
+                    <a href="{{ url_for('book_page', book_id=review._id) }}"
+                            class="btn-large pill-btn red">
+                        Cancel <i class="fas fa-times-circle riright"></i>
+                    </a>
                     <button type="submit" class="btn-large pill-btn waves-effect waves-light">
-                        Add Review <i class="fas fa-plus-square right"></i>
+                        Edit Review <i class="fas fa-edit right"></i>
                     </button>
                 </div>
             </div>
