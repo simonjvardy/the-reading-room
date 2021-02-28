@@ -1,4 +1,4 @@
-![The Reading Room]()
+![The Reading Room](static/images/the-reading-room-logo.png)
 
 ***The Reading Room** is a (fictitious) book review 'club' website providing reviews on a range of books and book categories.
 The idea for this project is to provide the visitor with an interactive website allowing registered users to create new book reviews for the enjoyment of all site visitors.
@@ -8,7 +8,7 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
 ***Please note: This is only to simulate an affiliate marketing business model for educational purposes and in no way endorses or implies a business relationship with the chosen retailers.***
 
 
-![Responsive Layout Screenshots]() 
+![Responsive Layout Screenshots](static/images/am-i-responsive-placeholder.png) 
 
 *I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
 
@@ -129,22 +129,42 @@ I achieve this by:
 
 ## Design Choices ##
 
+### Topology ###
+
+![User - not logged in](static/images/topology.png)
+![User - logged in](static/images/topology.png)
+![User - Admin or Superuser account](static/images/topology.png)
+
+
 ### Fonts ###
 
-I have chosen [Castoro](https://fonts.googleapis.com/css2?family=Castoro&display=swap) for all of the text.
+I've chosen fonts that complement eachother using a combination of serif and sans-serif fonts to lend a feeling of printed words on a page or in a book.
+
+
+The fonts I have chosed for this are [Playfair Display](https://fonts.google.com/specimen/Playfair+Display?query=playfa&preview.text_type=custom&selection.family=Special+Elite) 
+for the headings and [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro?query=source+sans&preview.text_type=custom&selection.family=Playfair+Display&sidebar.open=true) 
+for the body text.
+
+
+The Logo font was created using [Special Elite](https://fonts.google.com/specimen/Special+Elite?query=special&preview.text_type=custom&sidebar.open=true&selection.family=Special+Elite) 
+to give the look of an old typewriter. This is also used for the error handling messages and the titles in the footer.
 
 ### Colours ###
 
-I have chosen the colours that ...
+I've chosen the colours from the Materialize CSS [teal](https://materializecss.com/color.html) palette to give a clean light feel with pastel shades. This gives some separation for the
+different page sections without overpowering the layout and taking the focus away from the book reviews.
 
 
 
-![Colour palette](wireframes/coolors-palette2-sm.png)
+![Colour palette](wireframes/coolors-palette.png)
 
-- *Flickr Pink* (F72585) - Rich Pink
+- *Blue Green Colour Wheel* (004D40) - Dark Teal Green
+- *Persian Green* (009688) - Teal Green
+- *Azure X 11 Web Color* (E0F2F1) - Very Pale Teal Green
+- *White* (FFFFFF) - White
 
 
-These colours will compliment each other well to create a vivid but visually pleasing background.
+These colours will compliment each other well to create a calm but visually pleasing accent to the white background of the site.
 
 ### Wireframes ###
 
@@ -157,8 +177,13 @@ I focussed on defining the basic layout structure of the site and identified how
 The original hand drawn sketch wireframe was created as quick and rough method to try out page formatting ideas to form a basis for creating the wireframe within balsamic.
 
 It represents the early stages of the design process for the website as ideas started to form and the flow of the design process from idea to finished website.
-- [Homepage](wireframes/wireframe-mobile-homepage-draft.png)
-
+- [Homepage](wireframes/original-drafts/wireframe-mobile-1.png)
+- [Book Review](wireframes/original-drafts/wireframe-mobile-1.png)
+- [Book Page](wireframes/original-drafts/wireframe-mobile-4.png)
+- [Register](wireframes/original-drafts/wireframe-mobile-2.png)
+- [Log In](wireframes/original-drafts/wireframe-mobile-2.png)
+- [Add Review](wireframes/original-drafts/wireframe-mobile-3.png)
+- [Manage Categories](wireframes/original-drafts/wireframe-mobile-3.png)
 
 
 #### Final Wireframes ####
@@ -217,7 +242,7 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 - [itsdangerous](https://pypi.org/project/itsdangerous/)
   - Python utility for hash-based message authentication installed with Flask(HMAC, SHA-512)
 - [jQuery](https://jquery.com/)
-  - Loaded as part of the [Materialize CSS CDN link](https://materializecss.com/getting-started.html)
+  - Used for the initialisation of the Materialize CSS components functionality.
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
   - Templating language for Python.
 
@@ -266,28 +291,30 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 ### Responsive Design ###
 
  - Responsive mobile first design using a [MaterializeCSS](https://materializecss.com/) framework.
-  - The site format was designed for **smaller** device sizes such as **mobile** and **tablet** devices to give a simple, user friendly display.
 
-
-### Topology ###
-
-![topology](static/images/topology.png)
 
 ### Interactive Elements ###
 
 - The main features of the site are:
-  - The ... :
+  - The ...
+  - 
 
 - Additional Site features:
-  - A friendly HTTP 404 Error landing page for site visitors to see if a requested page is unavailable or cannot be accessed.
-    - The page provides a button to click to return the visitor to the homepage.
+  - A set of friendly HTTP Error landing pages for site visitors to see if a requested page is unavailable or cannot be accessed.
+    - The pages provide a message to the user and a button to click to return the visitor to the homepage.
 
-      ![404 Error](wireframes/404-img.png)
+      ![HTTP 404 Error](static/images/404-img.png)
+      
+      Other error code landing pages cover:
+      - HTTP 500 Error - Internal Server Error
+      - HTTP 503 Error - Service Unavailable
 
 
 ### Future Features ###
 
-- This ... :
+- Site Admin User Account administration such as:
+- User account deactivation
+- moderating user comments
   
 
 ### Site Construction  ###
@@ -360,7 +387,6 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 | Field Description | Collection Key | Data type |
 | --- | --- | :---: |
-| Unique ID | _id | ObjectId |
 | Unique ID | _id | ObjectId |
 | Policy Section Title | title | String |
 | Section Text Array | text | Array |
@@ -468,7 +494,9 @@ Markdown syntax is used to create **"To-Do" list** style checkboxes by adding `-
 The following describes the repository branch structure:
 - **Master** - this is the default branch and the source for the repository deployment.
     - **Documentation** - this branch is used for updating the README.md and testing.md documentation only.
-    - **Development** - this branch is used as the main working branch for the website development
+    - **Development** - this branch is used as the main working branch for the website development.
+    - **Features** - this branch is used to try out new ideas and enhancements for the website.
+        - Features and enhancements that are accepted are merged down into the Development branch.
     - Each individual **bug fixes** are raised within their own **separate branches** using the naming convention **\<GitHub Issue ID Number>-\<bug fix description>** e.g. branch name ***12-correct-navbar-links*** 
 
 The following workflow steps are used to create and update branches within Gitpod and to push changes back to GitHub.
@@ -482,28 +510,29 @@ The following workflow steps are used to create and update branches within Gitpo
 #### Branches ####
 3. For changes to be made to any **documentation files**, the git command `git checkout documentation` is used to checkout and switch to the **documentation branch**.
 4. For changes to be made to **other files** under normal site development, the git command `git checkout development` is used to checkout and switch to the **development branch**.
-5. To create a **new branch** for bug fixes, use the git command `git checkout -b <branch-name>` to **create and switch** to the new branch.
+5. For changes to be made to new files for site enhancements, the git command `git checkout features` is used to checkout and switch to the **features branch**.
+6. To create a **new branch** for bug fixes, use the git command `git checkout -b <branch-name>` to **create and switch** to the new branch.
 
 
 #### Working within a branch ####
-6. **New** or **modified** files are **staged** using the `git add .` command
-7. The changes are **committed** using `git commit -m "<commit message>"` command.
-8. If the changes are in a newly created branch, the **committed** changes are **pushed** from Gitpod to GitHub using the `git push --set-upstream origin <branch-name>` command as there is currently no upstream branch in the remote repository.
-9. For branches that have already been synchronized, the **committed** changes are **pushed** from Gitpod to GitHub using the `git push` command.
+7. **New** or **modified** files are **staged** using the `git add .` command
+8. The changes are **committed** using `git commit -m "<commit message>"` command.
+9. If the changes are in a newly created branch, the **committed** changes are **pushed** from Gitpod to GitHub using the `git push --set-upstream origin <branch-name>` command as there is currently no upstream branch in the remote repository.
+10. For branches that have already been synchronized, the **committed** changes are **pushed** from Gitpod to GitHub using the `git push` command.
 
 
 #### Merging branches in GitHub ####
-10. Opening the repository in Github, a new **pull request** is created for the updated branch and assigned to its related **Development**, **Development - JavaScript** or **Bug Fixes** project.
-11. The changes are **reviewed** to ensure there are **no conflicts** between the **updated branch** and the **Master branch**.
-12. The changes are then **merged** into the **Master branch** and the merge request is **closed**. The **Project entry** is **automatically** moved to the **Done** card.
+11. Opening the repository in Github, a new **pull request** is created for the updated branch and assigned to its related **Development**, **Development - JavaScript** or **Bug Fixes** project.
+12. The changes are **reviewed** to ensure there are **no conflicts** between the **updated branch** and the **Master branch**.
+13. The changes are then **merged** into the **Master branch** and the merge request is **closed**. The **Project entry** is **automatically** moved to the **Done** card.
 
 
 #### Update Gitpod with the latest GitHub commits ####
-13. To update Gitpod with the **latest commits** From GitHub, the `git checkout master` command is used to checkout and switch to the master branch.
-14. Use the `git pull` command to update the master branch and **reset the pointer**.
-15. Now **switch** to the **other branches** in Gitpod using the `git checkout <branch-name>` command and use the `git merge origin/master` command to **update each branch in turn**.
-16. Use the `git push` on **each branch** to update the relevant GiHub Branches to the **same commit** as the **Master branch**.
-17. **Repeat steps 3 - 17 regularly** to ensure updates are **saved** and **correctly version controlled** in GitHub.
+14. To update Gitpod with the **latest commits** From GitHub, the `git checkout master` command is used to checkout and switch to the master branch.
+15. Use the `git pull` command to update the master branch and **reset the pointer**.
+16. Now **switch** to the **other branches** in Gitpod using the `git checkout <branch-name>` command and use the `git merge origin/master` command to **update each branch in turn**.
+17. Use the `git push` on **each branch** to update the relevant GiHub Branches to the **same commit** as the **Master branch**.
+18. **Repeat steps 3 - 17 regularly** to ensure updates are **saved** and **correctly version controlled** in GitHub.
 
 
 [Back to contents](#contents)
@@ -534,21 +563,21 @@ Fixed bugs and issues are marked as [closed](https://github.com/simonjvardy/the-
 
 ## Deployment ##
 
-The website was developed using both *Gitpod* and *Visual Studio Code* and using *Git* pushed to *GitHub*, which hosts the repository. I made the following steps to deploy the site using *GitHub Pages*:
+The website was developed using both *Gitpod* and *Visual Studio Code* and using *Git* pushed to *GitHub*, which hosts the repository. I made the following steps to deploy the site using *Heroku*:
 
-- Opened up **GitHub** in the browser.
-- Signed in with my **username** and **password**.
-- Selected my **repositories**.
-- Navigated to **simonjvardy/the-reading-room**.
-- In the top navigation clicked **settings**.
-- Scrolled down to the **GitHub Pages** area.
-- Selected **Master Branch** from the **Source** dropdown menu.
-- Clicked to **confirm** my **selection**.
-- [the-reading-room](https://simonjvardy.github.io/the-reading-room/) is now **live** on **GitHub Pages**.
 
-### Running the-reading-room Locally ###
+### Cloning the-reading-room from GitHub ###
 
-Cloning the-reading-room from GitHub:
+#### Prerequisites ####
+
+Ensure the following are installed locally on your computer:
+- [Python 3.6 or higher](https://www.python.org/download/releases/3.0/)
+- [PIP3](https://pypi.org/project/pip/) Python package installer
+- [Git](https://git-scm.com/) Version Control
+
+
+#### Cloning the GitHub repository ####
+
 
 - Navigate to **simonjvardy/the-reading-room**.
 - Click the **Code** button.
@@ -558,8 +587,52 @@ Cloning the-reading-room from GitHub:
 
 Copy the following code and input it into your terminal to clone the-reading-room:
 
-```git clone https://github.com/simonjvardy/the-reading-room.git```
+```
+git clone https://github.com/simonjvardy/the-reading-room.git
+```
 
+#### Creation of a Python Virtual Environment ####
+
+*Note: The process may be different depending upon your own OS - please follow this [Python help guide](https://python.readthedocs.io/en/latest/library/venv.html)
+to understand how to create a virtual environment*
+
+#### Install the App dependencies and external libraries ####
+
+- In your IDE terminal window, install the dependencies from the requirements.txt file with the following command:
+
+```
+python -m pip -r requirements.txt
+```
+
+#### Create the database in MongoDB #####
+
+*Please ensure you have an account created at [MongoDB](https://account.mongodb.com/) in order to build the database*
+
+- In your MongoDB cluster, create a new database called `the-reading-room`
+- Create the following collections within the new database:
+  - `book_review`
+  - `genre`
+  - `users`
+  - `terms_conditions`
+  - `privacy`
+
+
+#### Create env.py file ####
+
+- The env.py file should contain at least the following information:
+
+```
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "YOUR_OWN_SECRET_KEY")
+os.environ.setdefault("MONGO_URI", "YOUR_OWN_MONGODB_URI")
+os.environ.setdefault("MONGO_DBNAME", "YOUR_OWN_MONGODB_DATABASE_NAME")
+```
+
+- Please ensure you add in your own `SECRET_KEY`, `MONGO_URI` and `MONGO_DBNAME` values.
+- Add the env.py file to your `.gitignore` file before pushing your files to any public git repository.
 
 [Back to contents](#contents)
 
