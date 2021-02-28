@@ -10,7 +10,7 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
 
 ![Responsive Layout Screenshots](static/images/am-i-responsive-placeholder.png) 
 
-*I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The muted, almsot monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
+*I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The muted, almost monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
 
 
 ---
