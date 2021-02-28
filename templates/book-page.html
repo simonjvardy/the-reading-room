@@ -39,7 +39,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- Purchase Book Button -->
+                <!-- Book Page Buttons -->
                 <div class="purchase-btn">
                     <a href="{{ book.purchase_link }}" target="_blank" rel="noreferrer" class="waves-effect waves-light btn pill-btn">
                         Purchase Book
@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div class="purchase-btn">
-                    <a href="#" class="waves-effect waves-light btn pill-btn">
+                    <a href="{{ url_for('add_comment', book_id=book._id) }}" class="waves-effect waves-light btn pill-btn">
                         Add Comment
                         <i class="fas fa-comments" aria-hidden="true"></i>
                     </a>
@@ -59,6 +59,13 @@
                         <i class="fas fa-thumbs-up" aria-hidden="true"></i>
                     </a>
                 </div>
+                <div class="purchase-btn">
+                    <a href="{{ url_for('edit_review', review_id=book._id) }}" class="waves-effect waves-light btn pill-btn">
+                        Edit Review
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                    </a>
+                </div>
+
             </div>
         </div>
         <!-- Book Review Section -->

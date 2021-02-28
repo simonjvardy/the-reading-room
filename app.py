@@ -226,6 +226,14 @@ def add_review():
         return redirect(url_for("login"))
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    review = mongo.db.book_review.find_one({"_id": ObjectId(review_id)})
+
+    genres = mongo.db.genre.find().sort("genre_name", 1)
+    return render_template("edit-review.html", review=review, genres=genres)
+
+
 @app.route("/book_page/<book_id>", methods=["GET", "POST"])
 def book_page(book_id):
     """
