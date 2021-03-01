@@ -183,8 +183,8 @@ def get_reviews():
 def add_review():
     """
     Render the Add Review page if a user is logged in.
-    Prevents "brute force" loading of the page and redirects
-    the site visitor to the login page if not logged in.
+    Prevents "brute force" loading of the page and redirects the site visitor
+    to the login page if not logged in.
     """
     try:
         if session["user"]:
@@ -230,8 +230,8 @@ def add_review():
 def edit_review(review_id):
     """
     Render the Edit Review page if a user is logged in.
-    Prevents "brute force" loading of the page and redirects
-    the site visitor to the login page if not logged in.
+    Prevents "brute force" loading of the page and redirects the site visitor
+    to the login page if not logged in.
     """
     try:
         if session["user"]:
@@ -257,7 +257,7 @@ def edit_review(review_id):
                     "purchase_link": link,
                     "count": 0
                 }
-                mongo.db.book_review.update(
+                mongo.db.book_review.update_one(
                     {"_id": ObjectId(review_id)}, submit_review)
                 flash(
                     "Review Successfully Updated",
@@ -332,35 +332,37 @@ def search():
 
 
 """
-User Comments Functionality allowing logged in users to
-add comments to book reviews from the book-page comments section
+User Comments Functionality allowing logged in users to add comments to book
+reviews from the book-page comments section
 """
 
 
-@app.route("/add_comment/<book_id>", methods=["GET", "POST"])
-def add_comment(book_id):
+@app.route("/add_comment/<comment_id>", methods=["GET", "POST"])
+def add_comment(comment_id):
     if request.method == "POST":
-        # collect the add comment form data and write to MongoDB
-        comment = {
-            "comments": [
-                {
-                    "text": request.form.get("comment")
-                }
-            ]
+        # collect the add-comment form data and write to MongoDB
+        new_comment = {
+            "text": request.form.get("comment"),
+            "created_by": session["user"],
+            "created_date": datetime.datetime.utcnow()
         }
-        mongo.db.genre.insert_one(comment)
+
+        mongo.db.book_review.update_one(
+                    {"_id": ObjectId(comment_id)},
+                    {"$push": {"comments": new_comment}})
+
         flash(
             "New Comment Added",
             "teal-text text-darken-2 teal lighten-5")
-        return redirect(url_for("get_genres"))
+        return redirect(url_for("book_page", book_id=comment_id))
 
-    return render_template("book-review.html")
+    comments = mongo.db.book_review.find_one({"_id": ObjectId(comment_id)})
+    return render_template("add-comment.html", comments=comments)
 
 
 """
-Book Genres categories CRUD Functionality allowing
-an 'Admin' user to manage the genre categories
-used in the book reviews.
+Book Genres categories CRUD Functionality allowing an 'Admin' user to manage
+the genre categories used in the book reviews.
 """
 
 
@@ -507,7 +509,7 @@ def delete_genre(genre_id):
 """
 Sitemap functionality:
 Privacy Policy - fetch policy sections text and render the page
-Term and Conditions - fetch T&C sections text and render the page
+Terms and Conditions - fetch T&C sections text and render the page
 """
 
 

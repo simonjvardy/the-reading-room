@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div class="purchase-btn">
-                    <a href="{{ url_for('add_comment', book_id=book._id) }}" class="waves-effect waves-light btn pill-btn">
+                    <a href="{{ url_for('add_comment', comment_id=book._id) }}" class="waves-effect waves-light btn pill-btn">
                         Add Comment
                         <i class="fas fa-comments" aria-hidden="true"></i>
                     </a>
@@ -94,7 +94,7 @@
                     {% for comment in book.comments %}
                     <div class="divider"></div>
                     <p>
-                        Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date }}
+                        Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date.strftime("%d %B, %Y") }}
                     </p>
                     <p>
                         {{ comment.text }}
