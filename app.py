@@ -166,7 +166,7 @@ def profile(username):
 
 
 """
-Book Review Functionality
+Book Review CRUD Functionality
 """
 
 
@@ -205,7 +205,7 @@ def add_review():
                     "review": request.form.get("review"),
                     "rating": request.form.get("rating"),
                     "created_by": session["user"],
-                    "is_book_of_month": request.form.get("is_book_of_month"),
+                    "is_book_of_month": "off",
                     "favourite": "off",
                     "purchase_link": link,
                     "count": 0
@@ -228,10 +228,86 @@ def add_review():
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
-    review = mongo.db.book_review.find_one({"_id": ObjectId(review_id)})
+    """
+    Render the Edit Review page if a user is logged in.
+    Prevents "brute force" loading of the page and redirects
+    the site visitor to the login page if not logged in.
+    """
+    try:
+        if session["user"]:
+            if request.method == "POST":
+                # create the fake Amazon affiliate link
+                link = ("https://www.amazon.co.uk/s?k=" +
+                        request.form.get("title").replace(" ", "+") +
+                        "&tag=faketag")
 
-    genres = mongo.db.genre.find().sort("genre_name", 1)
-    return render_template("edit-review.html", review=review, genres=genres)
+                # collect the add review form data and write to MongoDB
+                submit_review = {
+                    "genre": request.form.get("genre_name"),
+                    "title": request.form.get("title"),
+                    "author": request.form.get("author"),
+                    "image_url": request.form.get("image_url"),
+                    "number_pages": request.form.get("number_pages"),
+                    "isbn": request.form.get("isbn"),
+                    "review": request.form.get("review"),
+                    "rating": request.form.get("rating"),
+                    "created_by": session["user"],
+                    "is_book_of_month": request.form.get("is_book_of_month"),
+                    "favourite": "off",
+                    "purchase_link": link,
+                    "count": 0
+                }
+                mongo.db.book_review.update(
+                    {"_id": ObjectId(review_id)}, submit_review)
+                flash(
+                    "Review Successfully Updated",
+                    "teal-text text-darken-2 teal lighten-5")
+
+            review = mongo.db.book_review.find_one(
+                {"_id": ObjectId(review_id)})
+
+            genres = mongo.db.genre.find().sort("genre_name", 1)
+            return render_template(
+                "edit-review.html", review=review, genres=genres)
+
+    except Exception:
+        flash(
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
+
+
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    """
+    Delete Book Review function deletes the selected book review
+    from the database.
+    """
+    if session["user"]:
+        # grab the session user's details from db
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})
+
+        # grab the book review details
+        book = mongo.db.book_review.find_one(
+            {"_id": ObjectId(review_id)})
+
+        # if user is review creator, admin or superuser then allow delete
+        if (session["user"] == book["created_by"] or
+                username["is_admin"] == "on" or
+                username["is_super_user"] == "on"):
+
+            mongo.db.book_review.delete_one({"_id": ObjectId(review_id)})
+            flash(
+                "Book Review Successfully Deleted",
+                "orange-text text-darken-2 orange lighten-5")
+            return redirect(url_for("get_reviews"))
+
+        else:
+            flash(
+                "Sorry, you are not allowed to delete that!",
+                "red-text text-darken-2 red lighten-4")
+            return redirect(url_for("get_reviews"))
 
 
 @app.route("/book_page/<book_id>", methods=["GET", "POST"])
@@ -409,7 +485,7 @@ def delete_genre(genre_id):
             #  Delete if account is Admin or Superuser
             if (username["is_admin"] == "on" or
                     username["is_super_user"] == "on"):
-                mongo.db.genre.remove({"_id": ObjectId(genre_id)})
+                mongo.db.genre.delete_one({"_id": ObjectId(genre_id)})
                 flash(
                     "Genre Successfully Deleted",
                     "orange-text text-darken-2 orange lighten-5")
