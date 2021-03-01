@@ -4,14 +4,14 @@
     <h3 class="center-align">Add Comment</h3>
 
     <div class="row card-panel z-depth-3">
-        <form class="col s12" method="POST" action="{{ url_for('add_comment', book_id=book._id) }}">
+        <form class="col s12" method="POST" action="{{ url_for('add_comment', comment_id=comments._id) }}">
             <!-- Book Page Comment textarea -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="teal-text fas fa-align-left prefix"></i>
-                    <textarea id="review" name="review" class="materialize-textarea validate"
+                    <textarea id="comment" name="comment" class="materialize-textarea validate"
                         data-length="250"></textarea>
-                    <label for="review">Comment Text</label>
+                    <label for="comment">Comment Text</label>
                 </div>
             </div>
             <!-- Submit button -->
