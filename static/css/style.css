@@ -93,6 +93,16 @@ a#delete-btn:hover {
     height: 400px;  
 }
 
+/* -------------------------------------Search Bar Section */
+
+#search-bar {
+    border-radius: 15px;
+}
+
+#clear-btn {
+    margin-right: 15px;
+}
+
 /* -------------------------------------BOOK-PAGE Specific Section */
 
 .container-row {
