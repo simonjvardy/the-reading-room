@@ -233,9 +233,21 @@ def edit_review(review_id):
     Prevents "brute force" loading of the page and redirects the site visitor
     to the login page if not logged in.
     """
-    try:
-        if session["user"]:
-            if request.method == "POST":
+    if session["user"]:
+        if request.method == "POST":
+            # grab the session user's details from db
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
+
+            # grab the book review details
+            book = mongo.db.book_review.find_one(
+                {"_id": ObjectId(review_id)})
+
+            # if user is review creator, admin or superuser then allow edit
+            if (session["user"] == book["created_by"] or
+                    username["is_admin"] == "on" or
+                    username["is_super_user"] == "on"):
+
                 # create the fake Amazon affiliate link
                 link = ("https://www.amazon.co.uk/s?k=" +
                         request.form.get("title").replace(" ", "+") +
@@ -258,23 +270,24 @@ def edit_review(review_id):
                     "count": 0
                 }
                 mongo.db.book_review.update_one(
-                    {"_id": ObjectId(review_id)}, submit_review)
+                    {"_id": ObjectId(review_id)},
+                    {"$set": submit_review})
                 flash(
                     "Review Successfully Updated",
                     "teal-text text-darken-2 teal lighten-5")
 
-            review = mongo.db.book_review.find_one(
-                {"_id": ObjectId(review_id)})
+            else:
+                flash(
+                    "Sorry, you are not allowed to edit that!",
+                    "red-text text-darken-2 red lighten-4")
+                return redirect(url_for('book_page', book_id=book["_id"]))
 
-            genres = mongo.db.genre.find().sort("genre_name", 1)
-            return render_template(
-                "edit-review.html", review=review, genres=genres)
+        review = mongo.db.book_review.find_one(
+            {"_id": ObjectId(review_id)})
 
-    except Exception:
-        flash(
-            "Please log in first!",
-            "red-text text-darken-2 red lighten-4")
-        return redirect(url_for("login"))
+        genres = mongo.db.genre.find().sort("genre_name", 1)
+        return render_template(
+            "edit-review.html", review=review, genres=genres)
 
 
 @app.route("/delete_review/<review_id>")
