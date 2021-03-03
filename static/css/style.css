@@ -44,8 +44,8 @@ ul li h4 {
 
 /* -------------------------------------Common Site Styling Section */
 
-h3,
-h2 {
+h2,
+h3 {
     font-family: 'Playfair Display', Times, serif;
     font-weight: 600;
 }
@@ -80,17 +80,11 @@ h2 {
     min-height: 500px;
 }
 
-.card .card-content .card-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#delete-btn {
+a#delete-btn {
     background-color: rgb(97, 97, 97);
 }
 
-#delete-btn:hover {
+a#delete-btn:hover {
     background-color: rgb(209, 0, 0);
 }
 

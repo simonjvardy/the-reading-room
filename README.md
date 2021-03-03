@@ -620,7 +620,7 @@ to understand how to create a virtual environment*
 - In your IDE terminal window, install the dependencies from the requirements.txt file with the following command:
 
 ```
-python -m pip -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 #### Create the database in MongoDB #####
