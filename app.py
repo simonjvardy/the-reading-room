@@ -374,6 +374,29 @@ def add_comment(comment_id):
 
 
 """
+Book review favourite button functionality
+"""
+
+
+@app.route("/favourite/<favourite_id>")
+def favourite(favourite_id):
+    if request.method == "POST":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})
+
+        # grab the book review details
+        book = mongo.db.book_review.find_one(
+            {"_id": ObjectId(favourite_id)})
+
+        # collect the add-comment form data and write to MongoDB
+        favourite = {
+            "book_review_id": book["_id"],
+        }
+    favourites = mongo.db.book_review.find_one({"_id": ObjectId(favourite_id)})
+    return render_template("book-page.html", favourites=favourites)
+
+
+"""
 Book Genres categories CRUD Functionality allowing an 'Admin' user to manage
 the genre categories used in the book reviews.
 """
