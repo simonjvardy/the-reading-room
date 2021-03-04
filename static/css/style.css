@@ -2,6 +2,12 @@
 
 /* -------------------------------------Special Styling */
 
+body {
+    padding: 0px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
 body,
 .card .card-content .card-text-sm {
     font-family: 'Source Sans Pro', sans-serif;
@@ -76,6 +82,11 @@ h3 {
 
 /* -------------------------------------BOOK-REVIEW Specific Section */
 
+#book-review{
+    margin-top: 50px;
+    margin-bottom: 10vh;
+}
+
 .book-review-card {
     min-height: 500px;
 }
@@ -97,6 +108,7 @@ a#delete-btn:hover {
 
 #search-bar {
     border-radius: 15px;
+    margin-bottom: 5vh;
 }
 
 #clear-btn {
@@ -106,7 +118,7 @@ a#delete-btn:hover {
 /* -------------------------------------BOOK-PAGE Specific Section */
 
 .container-row {
-    margin: 20px auto;
+    margin: 50px auto;
 }
 
 #book-page-img img {
@@ -120,11 +132,27 @@ a#delete-btn:hover {
     margin-right: auto;
 }
 
-.purchase-btn {
+.book-review-btn {
     margin-top: 15px;
 }
 
+.book-review-btn a {
+    margin-left: 10px;
+}
+
+
+/* -------------------------------------ADD COMMENT Section */
+
+/*.card-panel {
+    margin-top: 25px;
+    margin-bottom: 20vh;
+}*/
+
 /* -------------------------------------MANAGE-GENRES Specific Section */
+
+#manage-genres {
+    margin: 5vh 0;
+}
 
 .card {
     border-radius: 15px;
@@ -137,6 +165,21 @@ a#delete-btn:hover {
 }
 
 /* -------------------------------------FOOTER SECTION */
+
+/* Sticky footer styling from MaterializeCSS */
+body {
+    padding: 0px;
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+}
+/* Sticky footer end */
 
 .footer {
     margin: 0 auto;
@@ -252,4 +295,5 @@ a#delete-btn:hover {
         color: #000;
         margin-left: 10px;
     }
+
 }
