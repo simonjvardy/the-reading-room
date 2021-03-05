@@ -378,22 +378,33 @@ Book review favourite button functionality
 """
 
 
-@app.route("/favourite/<favourite_id>")
-def favourite(favourite_id):
-    if request.method == "POST":
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})
+@app.route("/favourites/<favourites_id>")
+def favourites(favourites_id):
+    try:
+        if session["user"]:
+            # grab the session user's details from db
+            username = mongo.db.users.find_one(
+                {"username": session["user"]})
 
-        # grab the book review details
-        book = mongo.db.book_review.find_one(
-            {"_id": ObjectId(favourite_id)})
+            # grab the book review details
+            book = mongo.db.book_review.find_one(
+                {"_id": ObjectId(favourites_id)})
 
-        # collect the add-comment form data and write to MongoDB
-        favourite = {
-            "book_review_id": book["_id"],
-        }
-    favourites = mongo.db.book_review.find_one({"_id": ObjectId(favourite_id)})
-    return render_template("book-page.html", favourites=favourites)
+            favourites = {
+                "book_review_id": book["_id"]
+            }
+
+            mongo.db.users.update_one(
+                {"_id": ObjectId(username["_id"])},
+                {"$push": {"favourites": favourites}})
+
+            return redirect(url_for("book_page", book_id=book["_id"]))
+
+    except Exception:
+        flash(
+            "Please log in first!",
+            "red-text text-darken-2 red lighten-4")
+        return redirect(url_for("login"))
 
 
 """

@@ -4,20 +4,33 @@
     <div class="row">
         <div class="col s12 m8 offset-m2">
             <div class="card-panel z-depth-3">
-                <h3 class="center-align teal-text">
+                <h3 class="center-align">
                     {{ username.username }}'s Profile
                 </h3>
-                <p>
-                    Account Type: {{ account }}
-                </p>
-                <p>
-                    <!-- Convert MongoDB datetime objects into strings -->
-                    Member Since: {{ username.date_joined.strftime("%d %B, %Y") }}
-                </p>
-                <p>
-                    <!-- Convert MongoDB datetime objects into strings -->
-                    Last Login: {{ username.last_login.strftime("%A %d %B, %Y") }}
-                </p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Account Type:</td>
+                            <td>{{ account }}</td>
+                        </tr>
+                        <tr>
+                            <td>Member Since:</td>
+                            <!-- Convert MongoDB datetime objects into strings -->
+                            <td>{{ username.date_joined.strftime("%d %B, %Y") }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Login:</td>
+                            <!-- Convert MongoDB datetime objects into strings -->
+                            <td>{{ username.last_login.strftime("%A %d %B, %Y") }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Comments Section -->
+                <div class="divider"></div>
+                <div class="section">
+                    <h5>Favourite Reviews</h5>
+                    <!-- Favourites list iteration -->
+                </div>                
             </div>
         </div>
     </div>
