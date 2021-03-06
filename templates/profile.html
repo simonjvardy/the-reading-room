@@ -5,10 +5,15 @@
         <div class="col s12 m8 offset-m2">
             <div class="card-panel z-depth-3">
                 <h3 class="center-align">
-                    {{ username.username }}'s Profile
+                    Profile Page
                 </h3>
-                <table>
+                <table class="responsive-table">
                     <tbody>
+                        <tr>
+                            <td>User Name:</td>
+                            <td>{{ username.username }}</td>
+                        </tr>
+
                         <tr>
                             <td>Account Type:</td>
                             <td>{{ account }}</td>
@@ -28,8 +33,21 @@
                 <!-- Comments Section -->
                 <div class="divider"></div>
                 <div class="section">
-                    <h5>Favourite Reviews</h5>
+                    <h5>Favourites</h5>
                     <!-- Favourites list iteration -->
+                    {% for fav in username.favourites %}
+                    <div class="divider"></div>
+                    <table class="responsive-table text-center">
+                        <tr>
+                            <td width="5%"><i class="fas fa-book-open"></i></td>
+                            <td width="28%">{{ fav.title }}</td>
+                            <td width="5%"><i class="fas fa-user-edit"></i></td>
+                            <td width="28%">{{ fav.author }}</td>
+                            <td width="5%"><i class="fas fa-tag"></i></td>
+                            <td width="28%">{{ fav.genre }}</td>
+                        </tr>
+                    </table>
+                    {% endfor %}
                 </div>                
             </div>
         </div>
