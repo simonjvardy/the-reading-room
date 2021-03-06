@@ -156,7 +156,9 @@ def profile(username):
                 account = "User"
 
             return render_template(
-                "profile.html", username=username, account=account)
+                "profile.html",
+                username=username,
+                account=account)
 
     except Exception:
         flash(
@@ -265,7 +267,6 @@ def edit_review(review_id):
                     "rating": request.form.get("rating"),
                     "created_by": session["user"],
                     "is_book_of_month": request.form.get("is_book_of_month"),
-                    "favourite": "off",
                     "purchase_link": link,
                     "count": 0
                 }
@@ -378,33 +379,41 @@ Book review favourite button functionality
 """
 
 
-@app.route("/favourites/<favourites_id>")
-def favourites(favourites_id):
-    try:
-        if session["user"]:
-            # grab the session user's details from db
-            username = mongo.db.users.find_one(
-                {"username": session["user"]})
+@app.route("/add_favourite/<favourite_id>")
+def add_favourite(favourite_id):
+    if session["user"]:
+        # grab the session user's details from db
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})
 
-            # grab the book review details
-            book = mongo.db.book_review.find_one(
-                {"_id": ObjectId(favourites_id)})
+        # grab the book review details
+        book = mongo.db.book_review.find_one(
+            {"_id": ObjectId(favourite_id)})
 
-            favourites = {
-                "book_review_id": book["_id"]
-            }
+        # Collect the favourites object data
+        favourites = {
+            "book_review_id": book["_id"],
+            "title": book["title"],
+            "author": book["author"],
+            "genre": book["genre"]
+        }
 
-            mongo.db.users.update_one(
-                {"_id": ObjectId(username["_id"])},
-                {"$push": {"favourites": favourites}})
+        # update the user document favourites array
+        mongo.db.users.update_one(
+            {"_id": ObjectId(username["_id"])},
+            {"$push": {"favourites": favourites}})
 
-            return redirect(url_for("book_page", book_id=book["_id"]))
-
-    except Exception:
         flash(
-            "Please log in first!",
+            "Favourite added to your profile",
+            "teal-text text-darken-2 teal lighten-5")
+        return redirect(url_for("book_page", book_id=book["_id"]))
+
+    # If user isn't logged in display a message only
+    else:
+        flash(
+            "Sorry, you are not allowed to do that!",
             "red-text text-darken-2 red lighten-4")
-        return redirect(url_for("login"))
+        return redirect(url_for("book_page", book_id=book["_id"]))
 
 
 """
