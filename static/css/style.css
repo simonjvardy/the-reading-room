@@ -141,12 +141,12 @@ a#delete-btn:hover {
 }
 
 
-/* -------------------------------------ADD COMMENT Section */
+/* -------------------------------------PROFILE PAGE Specific Section */
 
-/*.card-panel {
-    margin-top: 25px;
-    margin-bottom: 20vh;
-}*/
+#profile {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
 
 /* -------------------------------------MANAGE-GENRES Specific Section */
 

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
+    <div id="profile" class="row">
         <div class="col s12 m8 offset-m2">
             <div class="card-panel z-depth-3">
                 <h3 class="center-align">
@@ -30,7 +30,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- Favourites Section -->
+                <!-- Favourite Books Section -->
                 <div class="divider"></div>
                 <div class="section">
                     <h5>Favourites</h5>
@@ -53,8 +53,8 @@
                 <div class="section">
                     <h5>Book Reviews Written</h5>
                     <div class="divider"></div>
-                    {% for user_review in user_reviews %}
                     <!-- Book Reviews list iteration -->
+                    {% for user_review in user_reviews %}
                     <table>
                         <tr>
                             <td width="5%"><i class="fas fa-book-open"></i></td>
@@ -66,8 +66,7 @@
                         </tr>
                     </table>
                     {% endfor %}
-                </div>                
-                
+                </div>        
             </div>
         </div>
     </div>
