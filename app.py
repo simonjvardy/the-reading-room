@@ -26,6 +26,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+"""
+Render the Welcome / landing page
+"""
+
+
 @app.route("/")
 @app.route("/welcome")
 def welcome():
