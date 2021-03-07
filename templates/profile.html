@@ -30,14 +30,14 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- Comments Section -->
+                <!-- Favourites Section -->
                 <div class="divider"></div>
                 <div class="section">
                     <h5>Favourites</h5>
+                    <div class="divider"></div>
                     <!-- Favourites list iteration -->
                     {% for fav in username.favourites %}
-                    <div class="divider"></div>
-                    <table class="responsive-table text-center">
+                    <table>
                         <tr>
                             <td width="5%"><i class="fas fa-book-open"></i></td>
                             <td width="28%">{{ fav.title }}</td>
@@ -48,7 +48,26 @@
                         </tr>
                     </table>
                     {% endfor %}
+                </div>
+                <!-- Book Reviews Created Section -->
+                <div class="section">
+                    <h5>Book Reviews Written</h5>
+                    <div class="divider"></div>
+                    {% for user_review in user_reviews %}
+                    <!-- Book Reviews list iteration -->
+                    <table>
+                        <tr>
+                            <td width="5%"><i class="fas fa-book-open"></i></td>
+                            <td width="28%">{{ user_review.title }}</td>
+                            <td width="5%"><i class="fas fa-user-edit"></i></td>
+                            <td width="28%">{{ user_review.author }}</td>
+                            <td width="5%"><i class="fas fa-tag"></i></td>
+                            <td width="28%">{{ user_review.genre }}</td>
+                        </tr>
+                    </table>
+                    {% endfor %}
                 </div>                
+                
             </div>
         </div>
     </div>

@@ -146,6 +146,10 @@ def profile(username):
         username = mongo.db.users.find_one(
             {"username": session["user"]})
 
+        # find the reviews written by the user
+        user_reviews = list(mongo.db.book_review.find(
+            {"created_by": session["user"]}))
+
         # Check for user account type
         if session["user"]:
             if username["is_admin"] == "on":
@@ -158,7 +162,8 @@ def profile(username):
             return render_template(
                 "profile.html",
                 username=username,
-                account=account)
+                account=account,
+                user_reviews=user_reviews)
 
     except Exception:
         flash(
