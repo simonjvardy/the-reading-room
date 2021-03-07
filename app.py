@@ -212,10 +212,7 @@ def add_review():
                     "review": request.form.get("review"),
                     "rating": request.form.get("rating"),
                     "created_by": session["user"],
-                    "is_book_of_month": "off",
-                    "favourite": "off",
                     "purchase_link": link,
-                    "count": 0
                 }
                 mongo.db.book_review.insert_one(review)
                 flash(
@@ -271,9 +268,7 @@ def edit_review(review_id):
                     "review": request.form.get("review"),
                     "rating": request.form.get("rating"),
                     "created_by": session["user"],
-                    "is_book_of_month": request.form.get("is_book_of_month"),
                     "purchase_link": link,
-                    "count": 0
                 }
                 mongo.db.book_review.update_one(
                     {"_id": ObjectId(review_id)},
