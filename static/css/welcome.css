@@ -1,0 +1,32 @@
+/* -------------------------------------WELCOME PAGE Specific Section */
+
+
+body {
+    background: red;
+}
+
+.parallax-container {
+    height: 40vh;
+}
+
+#welcome-header {
+    font-family: 'Special Elite', serif;
+}
+
+h5,
+h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#welcome-btn {
+    margin-top: 1vh;
+}
+
+/* -------------------------------------Responsive Design - MOBILE */
+
+/* Reduce the Parallax image for smaller device sizes */
+@media screen and (max-width: 483px) {
+    .parallax-container {
+    height: 30vh;
+    }
+}

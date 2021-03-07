@@ -1,7 +1,30 @@
 {% extends "base.html" %}
-{% block content %}
+{% block styles %}
+    <!-- Specific styling for major elements on this page only -->
+    <link rel="stylesheet" 
+        href="{{ url_for('static', filename='css/welcome.css') }}" type="text/css">
+{% endblock %}
 
-    <h2>Extending the base template</h2>
-    <h3>welcome.html page</h3>
-
+{% block cta_image %}
+    <div class="parallax-container">
+        <div class="parallax"><img src="../static/images/bookshelf-1920x1080.jpg"></div>
+    </div>
+    <div class="section white center-align">
+        <div class="row container">
+            <h2 id="welcome-header" class="header">The Reading Room</h2>
+            <h5 class="grey-text text-darken-3 lighten-3">
+                Come and join The Reading Room.
+            </h5>
+            <h6>
+                Where you can discover new books to enjoy
+                and leave your own reviews for others to find...
+            </h6>
+            <a href="{{ url_for('get_reviews') }}" id="welcome-btn" class="teal btn pill-btn">
+                FIND OUT MORE
+            </a>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="../static/images/bookshelf-1920x1080.jpg"></div>
+    </div>
 {% endblock %}

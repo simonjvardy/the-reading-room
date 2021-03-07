@@ -40,6 +40,7 @@
 
 <body>
 
+    <!-- Nav bar elements are placed in a separate partial HTML file -->
     <header>
         {% include 'includes/navbar.html' ignore missing %}
     </header>
@@ -59,11 +60,25 @@
         {% endwith %}
     </section>
 
+    <!-- 
+        This block sits outside the Materialize CSS container class 70% width
+        allowing a full page width hero image / CTA on the welcome page
+    -->
+    <section>
+        {% block cta_image %}
+        {% endblock %}
+    </section>
+
+    <!--
+        Materialize CSS container class places main content in a 70% width
+        page layout
+    -->
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
 
+    <!-- Footer elements are placed in a separate partial HTML file -->
     <footer>
         {% include 'includes/footer.html' ignore missing %}
     </footer>
