@@ -111,29 +111,42 @@ I achieve this by:
 
 ### **User Stories** ###
 
+
+#### **New Site Visitor** ####
+
 - As a **user**, I want to see a **navigation bar** at the top of the page where I can navigate to each of the different site pages.
 - As a **user**, I can see a **collapsed navigation bar icon** on mobile devices that opens up to give access to the site navigation links when clicked.
-- As a **user**, I can see a **company logo** or name in the navigation bar.
+- As a **user**, I can see a **site logo** or name in the navigation bar.
 - As a **user**, I can see a **hero image** welcoming the user to the site.
 - As a **user**, I can see **Call To Actions (CTA)** to learn more about the book reviews available.
-- As a **user**, I can see a **carousel** containing popular book reviews
 - As a **user**, I want to see a page containing **all** the available book reviews.
 - As a **user**, I want to be able to search for book reviews.
 - As a **user**, I want to click on a **book review** to see more details about the book.
 - As a **user**, I want to be able to click **links** to **online retailers** to purchase the reviewed books.
 - As a **user**, I want to **register** a username and password to **log in** to the site.
-- As a **user**, I want to create, edit or delete my own book reviews.
 - As a **user**, I can see the website **privacy policy** and **terms and conditions**.
 - As a **user**, I can see a **site map** with **links** to all the site pages.
-- As a **user**, I want to **upvote** and/or **favourite** the review.
 - As a **user**, I can contact the site owner(s) using their **social media** channels.
+
+
+#### **Returning Site Visitor** ####
+
+- As a **user**, I want to see my user account profile page.
+- As a **user**, I want to be able to click on a book review favourite button to save my favourite reviews.
+- As a **user**, I want to create, edit or delete my own book reviews.
+- As a **user**, I want to be able to wite a comment on a book review.
+
+
+#### **Site Administrator** ####
+
+- As an **Administrator**, I want to be able to add, edit and delete the book rewiew genre categories
+
 
 ### **Site Owner Goals** ###
 
 - As a **site owner**, I want to create an **interactive website** allowing the user to easily understand the site's purpose and features.
 - As a **site owner**, I want the visitor to create a user account with a password to log in and access more site features.
 - As a **site owner**, I want the user to be able to log out of their account.
-- As a **site owner**, I want the user to be able to delete their account when it is no longer needed.
 - As a **site owner**, I want an ADMIN user account to administer the site content.
 
 
@@ -308,25 +321,88 @@ The final wireframes were created using Balsamiq adapted from the original hand 
  - Responsive mobile first design using a [MaterializeCSS](https://materializecss.com/) framework.
 
 
-### **Interactive Elements** ###
+### **Page Layout** ###
 
-- The main features of the site are:
-  - The ...
-  - 
 
-- Additional Site features:
-  - A set of friendly HTTP Error landing pages for site visitors to see if a requested page is unavailable or cannot be accessed.
+#### **Jinja Template relationship** ####
+
+![Jinja Template layout diagram](wireframes/)
+
+#### **Welcome Page** ####
+
+
+#### **Book Review Page** ####
+
+
+#### **Book Page** ####
+
+
+#### **Add Review Page** ####
+
+
+#### **Edit Review Page** ####
+
+
+#### **User Sign Up Page** ####
+
+
+#### **User Login Page** ####
+
+
+#### **Profile Page** ####
+
+
+#### **Manage Genre Page** ####
+
+
+#### **Manage Genre Page** ####
+
+
+#### **Edit Genre Page** ####
+
+
+#### **Add Comment Page** ####
+
+
+### **CRUD Functionality** ###
+
+
+| Site Page | Create | Read | Update | Delete |
+| --- | --- | --- | --- | --- |
+| Book Review |  | All book reviews |  |  |
+| Edit Review |  |  | Update book review |  |
+| Book Page | Add user favourite | Single Book Review |  | Delete Review |
+| Sign Up | Add new user |  |  |  |
+| Log In |  | User details |  |  |
+| Profile |  | User details |  |  |
+| Profile |  | Created book reviews |  |  |
+| Profile |  | Favourite reviews |  |  |
+| Manage Genre |  |  |  | Delete genre |
+| Add Genre | Add new genre |  |  |  |
+| Edit Genre |  |  | Update genre name |  |
+| Add Comment | Add new comment |  |  |  |
+
+### **User Alerts** ###
+
+
+### **Defensive Programming** ###
+
+
+### **Additional Site features** ###
+
+
+- A set of friendly HTTP Error landing pages for site visitors to see if a requested page is unavailable or cannot be accessed.
     - The pages provide a message to the user and a button to click to return the visitor to the homepage.
 
     - HTTP 404 Error
-      ![HTTP 404 Error](static/images/404-img.png)
-      
+        ![HTTP 404 Error](static/images/404-img.png)
+        
 
     - HTTP 500 Error
-      ![HTTP 500 Error](static/images/500-img.png)
-    
+        ![HTTP 500 Error](static/images/500-img.png)
+
     - HTTP 503 Error
-      ![HTTP 503 Error](static/images/503-img.png)
+        ![HTTP 503 Error](static/images/503-img.png)
 
 
 ### **Future Features** ###
