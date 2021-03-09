@@ -111,29 +111,42 @@ I achieve this by:
 
 ### **User Stories** ###
 
+
+#### **New Site Visitor** ####
+
 - As a **user**, I want to see a **navigation bar** at the top of the page where I can navigate to each of the different site pages.
 - As a **user**, I can see a **collapsed navigation bar icon** on mobile devices that opens up to give access to the site navigation links when clicked.
-- As a **user**, I can see a **company logo** or name in the navigation bar.
+- As a **user**, I can see a **site logo** or name in the navigation bar.
 - As a **user**, I can see a **hero image** welcoming the user to the site.
 - As a **user**, I can see **Call To Actions (CTA)** to learn more about the book reviews available.
-- As a **user**, I can see a **carousel** containing popular book reviews
 - As a **user**, I want to see a page containing **all** the available book reviews.
 - As a **user**, I want to be able to search for book reviews.
 - As a **user**, I want to click on a **book review** to see more details about the book.
 - As a **user**, I want to be able to click **links** to **online retailers** to purchase the reviewed books.
 - As a **user**, I want to **register** a username and password to **log in** to the site.
-- As a **user**, I want to create, edit or delete my own book reviews.
 - As a **user**, I can see the website **privacy policy** and **terms and conditions**.
 - As a **user**, I can see a **site map** with **links** to all the site pages.
-- As a **user**, I want to **upvote** and/or **favourite** the review.
 - As a **user**, I can contact the site owner(s) using their **social media** channels.
+
+
+#### **Returning Site Visitor** ####
+
+- As a **user**, I want to see my user account profile page.
+- As a **user**, I want to be able to click on a book review favourite button to save my favourite reviews.
+- As a **user**, I want to create, edit or delete my own book reviews.
+- As a **user**, I want to be able to wite a comment on a book review.
+
+
+#### **Site Administrator** ####
+
+- As an **Administrator**, I want to be able to add, edit and delete the book rewiew genre categories
+
 
 ### **Site Owner Goals** ###
 
 - As a **site owner**, I want to create an **interactive website** allowing the user to easily understand the site's purpose and features.
 - As a **site owner**, I want the visitor to create a user account with a password to log in and access more site features.
 - As a **site owner**, I want the user to be able to log out of their account.
-- As a **site owner**, I want the user to be able to delete their account when it is no longer needed.
 - As a **site owner**, I want an ADMIN user account to administer the site content.
 
 
@@ -308,25 +321,176 @@ The final wireframes were created using Balsamiq adapted from the original hand 
  - Responsive mobile first design using a [MaterializeCSS](https://materializecss.com/) framework.
 
 
-### **Interactive Elements** ###
+### **Page Layout** ###
 
-- The main features of the site are:
-  - The ...
-  - 
 
-- Additional Site features:
-  - A set of friendly HTTP Error landing pages for site visitors to see if a requested page is unavailable or cannot be accessed.
+#### **Jinja Template relationship** ####
+
+![Jinja Template layout diagram](wireframes/)
+
+
+#### **Responsive Navbar** ####
+
+- Responsive Navbar changes at smaller screen sizes
+  ![Mobile Navbar](static/images/readme-content/navbar-mobile.png)
+
+
+- Navbar contains the site logo
+- Jinja template conditions removes menu items based on:
+  - User logged in or out
+  - If the user account is Admin or Superuser
+
+  ![Mobile navbar logged out](static/images/readme-content/navbar-mobile-logged-out.png)
+
+  ![Mobile Navbar](static/images/readme-content/navbar-full-logged-out.png)
+  
+  ![Mobile navbar logged in](static/images/readme-content/navbar-mobile-logged-in.png)
+
+  ![Mobile Navbar](static/images/readme-content/navbar-full-logged-in.png)
+
+
+#### **Welcome Page** ####
+
+- The welcome page contains a hero image utilising the Materialize CSS parallax feature
+- The CTA container shows the visitor welcome message and button inviting the user to find out more.
+
+  ![Welcome Page](static/images/readme-content/welcome-page.png)
+
+#### **Book Review Page** ####
+
+- The book review page shows cards containing all available book reviews
+  - This page is available to all site visitors whether logged in or not.
+- Each card contains a floating orange button which opens the book page for that specific book review.
+
+- The search bar allows the user to search the available boo reviews using a text index on the book_review collection comprising the genre, author and title fields.
+
+  ![Welcome Page](static/images/readme-content/book-review-page.png)
+
+#### **Book Page** ####
+
+- Shows the book review details containing the full book review details.
+  - The book cover image URL is an optional field.
+  - It was decided to serve a URL to a book cover image rather than saving a file for simplicity of demonstrating CRUD Functionality. However, as a future development, allowing the user to save an image file using the Flask-PyMongo `save_file()` and `send_file()` helpers is highly desirable.
+
+- Allows the logged in users to create comments about the book review by linking t the create comment page.
+
+  ![Comments](static/images/readme-content/book-review-comments.png)
+
+***Book Page Buttons***
+
+- Favourite button
+  - Writes the book ID, tile and author to the users collection as an object in the favourites array.
+
+- Shopping Cart
+  - Opens the Amazon.co.uk website showing the book as a search term in the URL.
+    - Saving a new book review creates a fake Amazon.co.uk affiliate link search URL using the following format:
+        `https://www.amazon.co.uk/s?k=[book]+[title]+[words]&tag=faketag`
+    - This format is a compromise as it only returns a general search for the book title because specific book product page uses an Amazon ASIN product number in the URL.
+    - In the case of books, the Amazon ASIN number directly matches the book's shorter ISBN-10 barcode and can link directly to the book using the minimum URL format:
+        `https://www.amazon.co.uk/dp/[ASIN]`
+    - However, physical copies of books primarily show the longer ISBN-13 code on the back which will not work correctly if the user records that number when creating a new book review.
+
+- Book review edit button
+  - Opens the edit review page.
+  - Only available if the user created the review.
+
+  ![Book review buttons](static/images/readme-content/book-review-buttons.png)
+
+
+- Book Review delete button
+  - Opens the edit review page.
+  - Only available if the user created the review.
+
+- Comments button
+  - Opens the add comment page.
+  - Only available to users logged in.
+
+  ![Comments button](static/images/readme-content/comments-button.png)
+
+#### **Add Review Page** ####
+
+- Users who are logged in can create new book reviews by entering the book details and a book review in the add bok review form.
+  - The Choose Genre select list reads data from the genres collection.
+- The ADD REVIEW button submits the form data to create a new document in the book_reviews table.
+
+  ![Add book review](static/images/readme-content/new-review.png)
+
+
+#### **Edit Review Page** ####
+
+  ![Edit book review](static/images/readme-content/edit-book-review.png)
+
+#### **User Sign Up Page** ####
+
+  ![Sign Up](static/images/readme-content/sign-up.png)
+
+#### **User Login Page** ####
+
+  ![Log In](static/images/readme-content/log-in.png)
+
+#### **Profile Page** ####
+
+  ![Log In](static/images/readme-content/profile.png)
+
+#### **Manage Genre Page** ####
+
+  ![Log In](static/images/readme-content/manage-genres.png)
+
+#### **Add Genre Page** ####
+
+  ![Log In](static/images/readme-content/add-genre.png)
+
+#### **Edit Genre Page** ####
+
+  ![Log In](static/images/readme-content/edit-genre.png)
+
+#### **Add Comment Page** ####
+- Any user logged in can create a comment on any book review.
+- The comment text, created date and username are saved as an object in the book_review table comments array.
+
+
+  ![Log In](static/images/readme-content/edit-genre.png)
+
+  
+### **CRUD Functionality** ###
+
+
+| Site Page | Create | Read | Update | Delete |
+| --- | --- | --- | --- | --- |
+| Book Review |  | All book reviews |  |  |
+| Edit Review |  | Single book review | Update single book review |  |
+| Book Page | Add user favourite | Single book review |  | Delete single review |
+| Sign Up | Add new user |  |  |  |
+| Log In |  | User details |  |  |
+| Profile |  | User details |  |  |
+| Profile |  | Created book reviews |  |  |
+| Profile |  | Favourite reviews |  |  |
+| Manage Genre |  | All genres |  | Delete genre |
+| Add Genre | Add new genre |  |  |  |
+| Edit Genre |  | Single genre | Update genre name |  |
+| Add Comment | Add new comment |  |  |  |
+
+### **User Alerts** ###
+
+
+### **Defensive Programming** ###
+
+
+### **Additional Site features** ###
+
+
+- A set of friendly HTTP Error landing pages for site visitors to see if a requested page is unavailable or cannot be accessed.
     - The pages provide a message to the user and a button to click to return the visitor to the homepage.
 
     - HTTP 404 Error
-      ![HTTP 404 Error](static/images/404-img.png)
-      
+        ![HTTP 404 Error](static/images/404-img.png)
+        
 
     - HTTP 500 Error
-      ![HTTP 500 Error](static/images/500-img.png)
-    
+        ![HTTP 500 Error](static/images/500-img.png)
+
     - HTTP 503 Error
-      ![HTTP 503 Error](static/images/503-img.png)
+        ![HTTP 503 Error](static/images/503-img.png)
 
 
 ### **Future Features** ###
