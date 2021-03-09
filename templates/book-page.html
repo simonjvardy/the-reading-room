@@ -91,13 +91,13 @@
                     <h5>Comments</h5>
                     <!-- Comments list iteration -->
                     {% for comment in book.comments %}
-                    <div class="divider"></div>
-                    <p>
-                        Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date.strftime("%d %B, %Y") }}
-                    </p>
-                    <p>
-                        {{ comment.text }}
-                    </p>
+                        <div class="divider"></div>
+                        <p>
+                            Posted By: <strong>{{ comment.created_by }}</strong> on {{ comment.created_date.strftime("%d %B, %Y") }}
+                        </p>
+                        <p>
+                            {{ comment.text }}
+                        </p>
                     {% endfor %}
                 </div>                
             </div>
