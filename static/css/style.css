@@ -70,9 +70,18 @@ h3 {
 }
 
 /* Specifically for the manage-genres edit and delete button spacing */
+
 .card-action .pill-btn {
     margin: 5px 5px;
 }
+
+/* Specifically for the manage-genres edit and delete button spacing */
+
+#edit-review-btn a,
+#edit-genre-btn a {
+    margin: 0 25px;
+}
+
 
 /* -------------------------------------BASE Specific Section */
 
