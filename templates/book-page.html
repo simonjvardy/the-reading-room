@@ -59,14 +59,17 @@
                 <div class="divider"></div>
                 <div class="section">
                     <!-- Review Edit & Delete Buttons -->
+                    {# addition of specific users to demonstrate edit and delete functionality #}
                     {% if session.user|lower == book.created_by|lower or
                         session.user|lower == 'admin' or
                         session.user|lower == 'ci-user' %}
                     <div class="book-review-btn">
-                        <a href="{{ url_for('delete_review', review_id=book._id) }}" class="waves-effect waves-light red btn pill-btn right">
+                        <a href="{{ url_for('delete_review', review_id=book._id) }}"
+                            class="waves-effect waves-light red btn pill-btn right">
                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
                         </a>
-                        <a href="{{ url_for('edit_review', review_id=book._id) }}" class="waves-effect waves-light btn pill-btn right">
+                        <a href="{{ url_for('edit_review', review_id=book._id) }}"
+                            class="waves-effect waves-light btn pill-btn right">
                             <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -85,7 +88,8 @@
                 <div class="section">
                     <!-- New comment button -->
                     <div>
-                        <a href="{{ url_for('add_comment', comment_id=book._id) }}" class="waves-effect waves-light btn pill-btn right">
+                        <a href="{{ url_for('add_comment', comment_id=book._id) }}"
+                            class="waves-effect waves-light btn pill-btn right">
                             <i class="fas fa-comments" aria-hidden="true"></i>
                         </a>
                     </div>
