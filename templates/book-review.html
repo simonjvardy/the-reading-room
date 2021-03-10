@@ -11,7 +11,7 @@
         <div class="col s10 offset-s1 m6 l4 xl3">
             <div class="card book-review-card hoverable z-depth-2">
                 <div class="card-image">
-                    <img src="{{ review.image_url }}">
+                    <img src="{{ review.image_url }}" aria-label="book cover image">
                     <a href="{{ url_for('book_page', book_id=review._id) }}"
                         class="btn-floating halfway-fab waves-effect waves-light red hoverable"
                         aria-label="open book review button">
