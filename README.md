@@ -214,6 +214,7 @@ It represents the early stages of the design process for the website as ideas st
 - [Manage Categories](wireframes/original-drafts/wireframe-mobile-3.png)
 
 
+
 #### Final Wireframes ####
 
 The final wireframes were created using Balsamiq adapted from the original hand drawn wireframe concepts. The image shows the homepage from the site in three display sizes to demonstrate the responsive page design and layout.
@@ -225,8 +226,13 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 - [Book Page](wireframes/book-page.png)
 - [Add Review](wireframes/add-review.png)
 - [Edit Review](wireframes/edit-review.png)
-- [Manage Categories](wireframes/manage-categories.png)
-- [Add Category](wireframes/add-category.png)
+- [Manage Genres](wireframes/manage-categories.png)
+- [Add Genre](wireframes/add-category.png)
+- [Add Comment](wireframes/add-comment.png)
+- [Profile Page](wireframes/profile.png)
+- [Privacy Policy](wireframes/priacy-policy.png)
+- [Terms & Conditions](wireframes/terms-conditions.png)
+
 
 [Back to contents](#contents)
 
@@ -320,13 +326,23 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
  - Responsive mobile first design using a [MaterializeCSS](https://materializecss.com/) framework.
 
+### **Topology** ###
+- User Logged Out
+![Topology Logged Out](wireframes/topology-user-logout.png)
+
+- User Logged In
+![Topology Logged In](wireframes/topology-user-login.png)
+
+- Admin / Superuser Logged In
+![Topology Admin User](wireframes/topology-admin-user.png)
+
 
 ### **Page Layout** ###
 
 
 #### **Jinja Template relationship** ####
 
-![Jinja Template layout diagram](wireframes/)
+![Jinja Template layout diagram](wireframes/jinja-template-layout.png)
 
 
 #### **Responsive Navbar** ####
@@ -378,6 +394,8 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 ***Book Page Buttons***
 
+  ![Book Page Buttons](static/images/readme-content/book-page-fav-shop-btn.png)
+
 - Favourite button
   - Writes the book ID, tile and author to the users collection as an object in the favourites array.
 
@@ -418,29 +436,69 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 #### **Edit Review Page** ####
 
+- Only users who created the book review are permitted to edit the review.
+    - Loading the page gets the current book data from the book_review collection and pre-fills the Edit Review form.
+
+**Edit Review Buttons**
+- The red cancel button returns the user to the book review page without making any changes.
+- The green edit button updates the book_review document with the new data from all the form input fields.
+
   ![Edit book review](static/images/readme-content/edit-book-review.png)
 
 #### **User Sign Up Page** ####
+
+- New users are encouraged to create a new account to access more site features.
+  - Usernames are required to be unique and are checked against existing usernames in the users collection.
+  - The user is required to complete all fields and check-box before the new user is saved to the users collection  
+  - Passwords are hashed / salted before saving to the database (SHA256)
+  - The member since date and last login date are also writted automatically at this point.
 
   ![Sign Up](static/images/readme-content/sign-up.png)
 
 #### **User Login Page** ####
 
+- The user name and password are validated against existing users in the users collection.
+  - Users will not be allowed to log in if either the username or password are incorrect.
+
   ![Log In](static/images/readme-content/log-in.png)
 
 #### **Profile Page** ####
 
+- The profile page displays the user's current account details.
+- The Favourites section displays a summary of the user's favourite books
+- The Book Reviews Written displays a summary of the user's submitted book reviews.
+
   ![Log In](static/images/readme-content/profile.png)
 
-#### **Manage Genre Page** ####
+#### **Manage Genres Page** ####
+
+- Only visible for selected users e.g. Admin or Superuser account holders.
+- The page shows all current documents from the genres collection displayed in individual cards.
+  - Each card has an edit and delete button for that genre document.
+
+**Manage Genres Buttons**
+
+- Add Genre redirects the user to the Add Genre page where a new genre category can be added
+- Edit button redirects the user to the Edit Genre page where the genre name chan be updated
+- Delete button deletes the genre category from the genre collection.
 
   ![Log In](static/images/readme-content/manage-genres.png)
 
 #### **Add Genre Page** ####
 
+- Allows the admin or superuser to create a new genre category
+- The Add Genre button writes the genre_name to the new genre document.
+
   ![Log In](static/images/readme-content/add-genre.png)
 
 #### **Edit Genre Page** ####
+
+- Allows the admin or superuser to edit an existing genre category
+    - Loading the page gets the current genre_name from the genres collection and pre-fills the Edit Genre form.
+
+**Edit Genre Buttons**
+- The red cancel button returns the user to the manage genres page without making any changes.
+- The green edit button updates the genres document with the new data from the form input field.
 
   ![Log In](static/images/readme-content/edit-genre.png)
 
@@ -472,6 +530,25 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 ### **User Alerts** ###
 
+- Coloured Flask flash alerts are used to feedback a range of different user actions:
+
+  - **Success**
+  ![Log In](static/images/readme-content/flash-logged-in.png)
+  ![Add Favourite](static/images/readme-content/flash-favourite-added.png)
+  ![New Comment](static/images/readme-content/flash-new-comment.png)
+  ![Review Added](static/images/readme-content/flash-review-added.png)
+  ![Review Updated](static/images/readme-content/flash-review-updated.png)
+
+  - **Advisory**
+  ![Genre Deleted](static/images/readme-content/flash-genre-deleted.png)
+  ![Log Out](static/images/readme-content/flash-logged-out.png)
+  ![Review Deleted](static/images/readme-content/flash-review-deleted.png)
+
+
+  - **Warning**
+  ![Delete warning](static/images/readme-content/flash-delete-warning.png)
+  ![Edit Warning](static/images/readme-content/flash-edit-warning.png)
+  ![Profile Redirect](static/images/readme-content/flash-profile-redirect.png)
 
 ### **Defensive Programming** ###
 
@@ -500,13 +577,6 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 - moderating user comments
   
 
-### **Site Construction**  ###
-
-
-### **Page Layout** ###
-- Body
-
-
 ### **Database Design** ###
 
 
@@ -514,7 +584,7 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 
 | Field Description | Collection Key | Data type |
-| --- | --- | :---: |
+| --- | --- | --- |
 | Unique ID | _id | ObjectId |
 | Genre Name | genre_name | String |
 
@@ -523,42 +593,44 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 #### [users collection](wireframes/data-schemas/users.json) ####
 
 
-| Field Description | Collection Key | Data type |
-| --- | --- | :---: |
-| Unique ID | _id | ObjectId |
-| User Name | username | string |
-| SHA256 Hashed Password | password | String |
-| Sign Up Date | date_joined | Date Object |
-| Last User Login Date | last_login | Date Object |
+| Field Description | Collection Key | Data type | Default Value |
+| --- | --- | --- | --- |
+| Unique ID | _id | ObjectId |   |
+| User Name | username | string |   |
+| SHA256 Hashed Password | password | String |   |
+| Admin Account | is_admin | String | "off" |
+| Superuser Account | is_super_user | String | "off" |
+| Sign Up Date | date_joined | Date Object | utcnow() |
+| Last User Login Date | last_login | Date Object | utcnow() |
 
 
 #### [book_review collection](wireframes/data-schemas/book_review.json) ####
 
 
-| Field Description | Collection Key | Data type |
-| --- | --- | :---: |
-| Unique ID | _id | ObjectId |
-| Genre Category | genre | String |
-| Book Title | title | String |
-| Book Author | author | String |
-| Book Cover Image URL | image_url | String |
-| Number of Pages | number_pages | Integer |
-| Book ISBN-13 Number | isbn | String |
-| Book Review Text | review | String |
-| User Book Rating | rating | String |
-| Created By username | create_by | String |
-| Upvote count | count | Integer |
-| Comments Array | comments | Array |
-| Commments Array Object | text | String |
-| Commments Array Object | created_by | String |
-| Commments Array Object | created_date | Date Object |
+| Field Description | Collection Key | Data type | Default Value |
+| --- | --- | --- | --- |
+| Unique ID | _id | ObjectId |   |
+| Genre Category | genre | String |   |
+| Book Title | title | String |   |
+| Book Author | author | String |   |
+| Book Cover Image URL | image_url | String |   |
+| Number of Pages | number_pages | Integer |   |
+| Book ISBN-13 Number | isbn | String |   |
+| Book Review Text | review | String |   |
+| User Book Rating | rating | String |   |
+| Created By username | create_by | String | Session User |
+| Amazon Purchase Link | purchase_link | String | "https://www.amazon.co.uk/s?k=[book]+[title]+[words]&tag=faketag" |
+| Comments Array | comments | Array |   |
+| Commments Array Object | text | String |   |
+| Commments Array Object | created_by | String |   |
+| Commments Array Object | created_date | Date Object | utcnow() |
 
 
 #### [privacy collection](wireframes/data-schemas/privacy.json) ####
 
 
 | Field Description | Collection Key | Data type |
-| --- | --- | :---: |
+| --- | --- | --- |
 | Unique ID | _id | ObjectId |
 | Policy Section Title | title | String |
 | Section Text Array | text | Array |
@@ -569,7 +641,7 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 
 | Field Description | Collection Key | Data type |
-| --- | --- | :---: |
+| --- | --- | --- |
 | Unique ID | _id | ObjectId |
 | Policy Section Title | title | String |
 | Section Text Array | text | Array |
@@ -896,8 +968,26 @@ pip3 freeze --local > requirements.txt
 
 You can find the images used for the site [here](static/images). I have sourced them through various websites, which are either free to use or used under license:
 
-- Homepage
-  - The []
+- Welcome Page
+  - The Background [Hero Image](static/images/bookshelf-1920x1080.jpg) was free to use, sourced from [PIXNIO](https://pixnio.com/objects/books/bookcase-books-bookshelves-education-research-school-study) 
+
+- Book Review
+
+
+All demonstration book review image URLs were sourced from [Waterstones](https://www.waterstones.com/) online bookstore (© Waterstones, 2021. Waterstones Booksellers Limited - All Rights Reserved) from their CDN image delivery URLs and used purely for educational purposes only to demonstrate the app backend CRUD functionality. Please visit [Waterstones](https://www.waterstones.com/) for some fantastic deals on the latest books! 
+
+  - [Silmarillion](https://cdn.waterstones.com/bookjackets/large/9780/0084/9780008433949.jpg)
+  - [Clean Code: A Handbook of Agile Software Craftsmanship](https://cdn.waterstones.com/bookjackets/large/9780/1323/9780132350884.jpg)
+  - [Why We Sleep: The New Science of Sleep and Dreams](https://cdn.waterstones.com/bookjackets/large/9780/1419/9780141983769.jpg)
+  - [Wild: A Journey from Lost to Found](https://cdn.waterstones.com/override/v1/large/9781/7823/9781782394860.jpg)
+  - [The Hunger Games - The Hunger Games 1](https://cdn.waterstones.com/bookjackets/large/9781/4071/9781407132082.jpg)
+  - [White Silence - Elizabeth Cage](https://cdn.waterstones.com/bookjackets/large/9781/4722/9781472264480.jpg)
+  - [The Fear Bubble: Harness Fear and Live without Limits](https://cdn.waterstones.com/bookjackets/large/9780/0081/9780008194680.jpg)
+  - [Harry Potter and the Philosopher's Stone](https://cdn.waterstones.com/bookjackets/large/9781/4088/9781408855652.jpg)
+  - [Gangsta Granny](https://cdn.waterstones.com/bookjackets/large/9780/0073/9780007371464.jpg)
+  - [The Martian: Stranded on Mars, one astronaut fights to survive](https://cdn.waterstones.com/override/v3/large/9781/7850/9781785031137.jpg)
+  - [A Promised Land](https://cdn.waterstones.com/override/v4/large/9780/2414/9780241491515.jpg)
+
 
 - 404
   - The [Error 404 Text Background Image](static/images/bg.jpg) was sourced from [Colorlib](https://colorlib.com/wp/free-404-error-page-templates/) as part of a template licensed under CC BY 3.0
@@ -935,17 +1025,20 @@ The following websites were used as the starting point and inspiration for creat
 - [Colorlib](https://colorlib.com) the 404.html was adapted from a template made by Colorlib. Go visit their website for more awesome templates, themes and tools.
 - [Tutorials Point](https://www.tutorialspoint.com/How-to-prepare-a-Python-date-object-to-be-inserted-into-MongoDB) for help with writing timestamps data to MongoDB.
 - [JoeHx Blog](https://www.joehxblog.com/amazon-url-anatomy-dissection/) Dissecting the Amazon URL anatomy
-- [GeeksForGeeks]() Python 404 error handling in Flask
+- [GeeksForGeeks](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/) Python 404 error handling in Flask
 - [Python.org](https://python.readthedocs.io/en/latest/library/venv.html) Python VENV virtual environments documentation
-
+- [Codementor](https://www.codementor.io/@prasadsaya/working-with-arrays-in-mongodb-16s303gkd3)
 - [Stack Overflow](https://stackoverflow.com/) For help fixing so many thing that fell over on this project!
   - [Stack Overflow](https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches) for ideas and help with GitHub branch naming conventions.
   - [Stack Overflow](https://stackoverflow.com/questions/17575276/how-can-i-print-a-mongodb-list-in-a-jinja2-template) ofr Jinja2 MongoBD list iteration help.
   - [Stack Overflow](https://stackoverflow.com/questions/14026392/insert-current-time-into-mongo-using-pymongo) for help with writing timestamps data to MongoDB.
   - [Stack Overflow](https://stackoverflow.com/questions/4174941/how-to-sort-a-list-of-lists-by-a-specific-index-of-the-inner-list) How to sort a list of tuples by a specific index of the inner list.
   - [Stack Overflow](https://stackoverflow.com/questions/54094178/sorting-datetime-object-in-a-list-of-tuples) Sorting datetime objects in a list of tuples
+  - [Stack Overflow](https://stackoverflow.com/questions/31034699/how-to-push-new-items-to-an-array-inside-of-an-object) Pushing new items to an array inside of an object
+  - [Stack Overflow](https://stackoverflow.com/questions/36174320/how-to-disable-button-using-jquery-in-materialize-css) Disable Materialize CSS Buttons with jQuery
 - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
   - [Flashed Messages](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/) example code was copied and adapted for flashed messages.
+  - [Flask Docs](https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/) View Decorators
 - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
   - [Security Helpers](https://werkzeug.palletsprojects.com/en/1.0.x/utils/#module-werkzeug.security) code copied and adapted for user pasword hashing.
 - [Materialize CSS](https://materializecss.com/)
