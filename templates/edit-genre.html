@@ -14,13 +14,16 @@
                     <label for="genre_name">Genre Name</label>
                 </div>
             </div>
-            <!-- Submit button -->
+            <!-- Form Submit buttons -->
             <div id="edit-genre-btn" class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('get_genres') }}" class="btn-large red pill-btn">
+                    <a href="{{ url_for('get_genres') }}" class="btn-large red pill-btn"
+                            aria-label="cancel button">
                         <i class="fas fa-times-circle"></i>
                     </a>
-                    <button type="submit" class="btn-large pill-btn waves-effect waves-light">
+                    <button type="submit"
+                            class="btn-large pill-btn waves-effect waves-light"
+                            aria-label="submit form button">
                         <i class="fas fa-edit"></i>
                     </button>
                 </div>

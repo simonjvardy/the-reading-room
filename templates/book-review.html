@@ -12,7 +12,9 @@
             <div class="card book-review-card hoverable z-depth-2">
                 <div class="card-image">
                     <img src="{{ review.image_url }}">
-                    <a href="{{ url_for('book_page', book_id=review._id) }}" class="btn-floating halfway-fab waves-effect waves-light red hoverable">
+                    <a href="{{ url_for('book_page', book_id=review._id) }}"
+                        class="btn-floating halfway-fab waves-effect waves-light red hoverable"
+                        aria-label="open book review button">
                         <i class="fas fa-book-open"></i>
                     </a>
                 </div>

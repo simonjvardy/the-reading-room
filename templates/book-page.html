@@ -6,7 +6,7 @@
         <div class="row container-row">
             <!-- Book Cover Image -->
             <div id="book-page-img" class="col s12 m6">
-                <img src="{{ book.image_url }}">
+                <img src="{{ book.image_url }}" alt="Reviewed book cover image">
             </div>
             <!-- Book Details Table -->
             <div class="col s12 m6">
@@ -42,11 +42,13 @@
                 <!-- Book Page Buttons -->
                 <div class="book-review-btn">
                     <a href="{{ book.purchase_link }}" target="_blank" rel="noreferrer"
+                        aria-label="purchase the book button"
                         class="waves-effect waves-light btn pill-btn right">
                         <i class="fas fa-cart-plus" aria-hidden="true"></i>
                         <span class="sr-only">Amazon.co.uk</span>
                     </a>
                     <a href="{{ url_for('add_favourite', favourite_id=book._id) }}"
+                        aria-label="save favourite book button"
                         class="waves-effect waves-light btn pill-btn red lighten-2 right">
                         <i class="far fa-heart" aria-hidden="true"></i>
                     </a>
@@ -65,10 +67,12 @@
                         session.user|lower == 'ci-user' %}
                     <div class="book-review-btn">
                         <a href="{{ url_for('delete_review', review_id=book._id) }}"
+                            aria-label="delete book review button"
                             class="waves-effect waves-light red btn pill-btn right">
                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
                         </a>
                         <a href="{{ url_for('edit_review', review_id=book._id) }}"
+                            aria-label="edit book review button"
                             class="waves-effect waves-light btn pill-btn right">
                             <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>
@@ -89,6 +93,7 @@
                     <!-- New comment button -->
                     <div>
                         <a href="{{ url_for('add_comment', comment_id=book._id) }}"
+                            aria-label="add comment button"
                             class="waves-effect waves-light btn pill-btn right">
                             <i class="fas fa-comments" aria-hidden="true"></i>
                         </a>
