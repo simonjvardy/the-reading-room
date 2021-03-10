@@ -41,23 +41,7 @@ The following **validation services** and **linters** were used to check the val
 - [Chrome DevTools Lighthouse](https://developers.google.com/web/tools/lighthouse)
   - An open-source automated tool for improving webpages by running audits for performance, accessibility, progressive web apps, SEO etc.
 
-
-  - **Desktop Performance Report**
-    
-    ![Google Lighthouse - Desktop](assets/img/testing-lighthouse-desktop.png)
-
-  - **Mobile Performance Report**
-
-    ![Google Lighthouse - Mobile](assets/img/testing-lighthouse-mobile.png)
-
-    - **alarm.js results**
-    ![JSLint results for alarm.js](assets/img/testing-jslint-results-alarm.png)
-
-
-
-    - **clock.js results**
-    ![JSLint results for clock.js](assets/img/testing-jslint-results-clock.png)
-
+  - 
 
 - [JSHint (version 2.12.0)](https://jshint.com/)
   - JSHint is a community-driven tool that detects errors and potential problems in JavaScript code.
