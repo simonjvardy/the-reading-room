@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /static/
+Disallow: /wireframes/
+
+Sitemap: http://https://the-reading-room.herokuapp.com/sitemap.xml
