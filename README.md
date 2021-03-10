@@ -385,6 +385,9 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 #### **Book Page** ####
 
 - Shows the book review details containing the full book review details.
+
+  ![Book Page Buttons](static/images/readme-content/book-page.png)
+
   - The book cover image URL is an optional field.
   - It was decided to serve a URL to a book cover image rather than saving a file for simplicity of demonstrating CRUD Functionality. However, as a future development, allowing the user to save an image file using the Flask-PyMongo `save_file()` and `send_file()` helpers is highly desirable.
 
@@ -552,6 +555,12 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 ### **Defensive Programming** ###
 
+- In order to try to maintain the site security, defensive programming to prevent "brute force" loading of restricted pages was introduced.
+  - At its simplest level, certain pages are removed from view unless a user is logged in to the site.
+    - This ustilises session cookies to validate whether a user is logged in or not.
+  - The Python functions also contain checks on user input validity by employing if...esle statements as well as exception handling with try..except.
+    - examples of this include preventing site visitors, who aren't logged in, from just entering a page URL to bypass the login process. This type of exception redirects the user to the login page with a warning flash message.
+
 
 ### **Additional Site features** ###
 
@@ -573,8 +582,13 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 ### **Future Features** ###
 
 - Site Admin User Account administration such as:
-- User account deactivation
-- moderating user comments
+  - User account deactivation
+  - User password change
+  - moderating user comments
+
+- Allowing users to upload image files:
+  - As an alternative to a URL on book reviews
+  - For a profile page thumbnail image etc.
   
 
 ### **Database Design** ###
