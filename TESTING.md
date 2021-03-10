@@ -1,17 +1,17 @@
-![Alarm Clock](assets/favicons/apple-touch-icon.png)
+![The Reading Room](static/images/the-reading-room-logo.png)
 
-# alarm-clock Project Testing Details #
+# The Reading Room Project Testing Details #
 
 
-[Main README.md file](https://github.com/simonjvardy/alarm-clock/blob/master/README.md)
+[Main README.md file](https://github.com/simonjvardy/the-reading-room/blob/master/README.md)
 
-[View the live project here.](https://simonjvardy.github.io/alarm-clock/)
+[View the live project here.](http://the-reading-room.herokuapp.com/welcome)
 
 ---
 
 ## Table of Contents ##
 
-- [alarm-clock Project Testing Details](#alarm-clock-project-testing-details)
+- [The Reading Room Project Testing Details](#the-reading-room-project-testing-details)
   - [Table of Contents](#table-of-contents)
   - [Automated Testing](#automated-testing)
     - [Validation Services](#validation-services)
@@ -34,11 +34,9 @@
 The following **validation services** and **linters** were used to check the validity of the website code.
 
 
-- [W3C Markup Validation](https://validator.w3.org/) 
-  - This validator checks the markup validity of Web documents in HTML, XHTML, SMIL, MathML, etc.
-
-- [W3C CSS validation](https://jigsaw.w3.org/css-validator/)
-  - This validator checks the validity of cascading style sheets (css) and (X)HTML documents with style sheets.
+- [PEP8 Online validation](http://pep8online.com/checkresult)
+  - This linter checks the validity of Python code against the PEP8 requirements
+    ![](static/images/readme-content/pep8-online.png)
 
 - [Chrome DevTools Lighthouse](https://developers.google.com/web/tools/lighthouse)
   - An open-source automated tool for improving webpages by running audits for performance, accessibility, progressive web apps, SEO etc.
@@ -51,26 +49,6 @@ The following **validation services** and **linters** were used to check the val
   - **Mobile Performance Report**
 
     ![Google Lighthouse - Mobile](assets/img/testing-lighthouse-mobile.png)
-
-- [JSLint](https://jslint.com/)
-  - JSLint is a code quality tool that detects errors and potential problems in JavaScript code.
-  - The following option were selected to prevent  errors and warning being returned owing to the strict nature of the checking:
-  ![JSLint Options](assets/img/testing-jslint-options.png)
-
-  - clock.js and alarm.js testing using JSLint passed the linter test successfully with the following selected options: 
-    - Assume: a browser
-      - This was required as JSLint is intolerant of DOM HTML `.getElementByID()` method.
-    - Tolerate: single quote strings
-       - This was needed to handle the font awesome bell icon `bellIconDiv.innerHTML = '<i class="far fa-bell-slash"></i>';` string.
-    - Tolerate: this
-      - Used in alarm.js function `alarmSetButton.onclick`
-    - Tolerate: Whitespace mess
-      - JSLint is very picky about whitespace at the end of comments as well as code. The .js files were cleansed of whitespaces but the odd one still lurks here or there giving frustrating errors. It's also very sensitive to indentation styles. 
-        - The code is indented with the standard 2 spaces but triggers JSLint warnings
-        ![JSLint whitespace warnings](assets/img/testing-jslint-whitespace-warnings.png)
-    - /\*global\*/ directive is used to instruct JSLint not to give undeclared 'Image' warnings when creating new HTMLImageElement instances.
-    ![JSLint whitespace warnings](assets/img/testing-jslint-global-warnings.png)
-
 
     - **alarm.js results**
     ![JSLint results for alarm.js](assets/img/testing-jslint-results-alarm.png)
