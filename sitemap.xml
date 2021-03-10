@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://the-reading-room.herokuapp.com/</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/welcome</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/get_reviews</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/sign_up</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/login</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/privacy_policy</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/terms_conditions_list</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/602d203344dd79dc945cd708</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314856daafd100837ff0ec</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314967daafd100837ff0ed</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314a68daafd100837ff0ee</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314c96daafd100837ff0ef</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314db3daafd100837ff0f0</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314e6fdaafd100837ff0f1</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60314f58daafd100837ff0f2</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60316b6f02b8c3fee605cba0</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/60319afbf82d06503a67db85</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/book_page/603804f4d4752e18d03877f8</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/602d203344dd79dc945cd708</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314856daafd100837ff0ec</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314967daafd100837ff0ed</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314a68daafd100837ff0ee</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314c96daafd100837ff0ef</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314db3daafd100837ff0f0</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314e6fdaafd100837ff0f1</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60314f58daafd100837ff0f2</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60316b6f02b8c3fee605cba0</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/60319afbf82d06503a67db85</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://the-reading-room.herokuapp.com/add_comment/603804f4d4752e18d03877f8</loc>
+  <lastmod>2021-03-10T18:55:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
