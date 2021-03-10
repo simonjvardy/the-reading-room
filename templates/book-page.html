@@ -46,11 +46,8 @@
                         <i class="fas fa-cart-plus" aria-hidden="true"></i>
                         <span class="sr-only">Amazon.co.uk</span>
                     </a>
-                    <a href="#" class="waves-effect waves-light btn pill-btn right">
-                        <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-                    </a>
                     <a href="{{ url_for('add_favourite', favourite_id=book._id) }}"
-                    \   class="waves-effect waves-light btn pill-btn red lighten-2 right">
+                        class="waves-effect waves-light btn pill-btn red lighten-2 right">
                         <i class="far fa-heart" aria-hidden="true"></i>
                     </a>
                 </div>                
@@ -62,6 +59,9 @@
                 <div class="divider"></div>
                 <div class="section">
                     <!-- Review Edit & Delete Buttons -->
+                    {% if session.user|lower == book.created_by|lower or
+                        session.user|lower == 'admin' or
+                        session.user|lower == 'ci-user' %}
                     <div class="book-review-btn">
                         <a href="{{ url_for('delete_review', review_id=book._id) }}" class="waves-effect waves-light red btn pill-btn right">
                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
@@ -70,6 +70,7 @@
                             <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>
                     </div>
+                    {% endif %}
                     <h5>Book Review</h5>
                     <p>
                         {{ book.review }}

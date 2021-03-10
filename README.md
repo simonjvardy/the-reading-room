@@ -449,9 +449,9 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 - The comment text, created date and username are saved as an object in the book_review table comments array.
 
 
-  ![Log In](static/images/readme-content/edit-genre.png)
+  ![Log In](static/images/readme-content/add-comment.png)
 
-  
+
 ### **CRUD Functionality** ###
 
 
