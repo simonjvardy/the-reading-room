@@ -632,7 +632,7 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 | Book ISBN-13 Number | isbn | String |   |
 | Book Review Text | review | String |   |
 | User Book Rating | rating | String |   |
-| Created By username | create_by | String | Session User |
+| Created By username | create_by | String | username |
 | Amazon Purchase Link | purchase_link | String | "https://www.amazon.co.uk/s?k=[book]+[title]+[words]&tag=faketag" |
 | Comments Array | comments | Array |   |
 | Commments Array Object | text | String |   |
