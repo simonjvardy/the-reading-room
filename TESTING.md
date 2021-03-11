@@ -41,28 +41,8 @@ The following **validation services** and **linters** were used to check the val
 - [Chrome DevTools Lighthouse](https://developers.google.com/web/tools/lighthouse)
   - An open-source automated tool for improving webpages by running audits for performance, accessibility, progressive web apps, SEO etc.
 
-  - 
-
-- [JSHint (version 2.12.0)](https://jshint.com/)
-  - JSHint is a community-driven tool that detects errors and potential problems in JavaScript code.
-  - The following option were selected to prevent  errors and warning being returned owing to the strict nature of the checking:
-
-    ![JSLint Options](assets/img/testing-jshint-options.png)
-
-  - clock.js and alarm.js testing using JSHint passed the linter test successfully with the following selected additional option:
-    - New JavaScript features (ES6)
-      - This was selected as both scripts use ECMAScript 6 features such as `const`
-
-
-  - **alarm.js results**
+    ![](static/images/readme-content/lighthouse-desktop.png)
   
-    ![JSLint Options](assets/img/testing-jshint-results-alarm.png)
-
-
-  - **clock.js results**
-  
-    ![JSLint Options](assets/img/testing-jshint-results-clock.png)
-
 
 ---
 ## Manual Testing ##
@@ -73,17 +53,6 @@ The following **validation services** and **linters** were used to check the val
 - The test cases,
 - The pass / fail record for each test case.
 
-
-### User Acceptance Testing (UAT) ###
-[UAT document](testing/alarm-clock-uat-test-plan.pdf) containing:
-- UAT approach (scope, assumptions and constraints, team roles and responsibilities etc.), 
-- Identified risks, 
-- The test cases,
-- The pass / fail record for each test case.
-
-### Peer Code Review ###
-The deployed website link was subjected to peer code review and testing:
-- Code Institute Mentor - Narender Singh
 
 ### Testing undertaken on desktop ###
 
@@ -110,8 +79,8 @@ The deployed website link was subjected to peer code review and testing:
     - iPad Pro 10.5"
     - iPhone XS Max
 - Tested Operating Systems:
-    - iOS 14.2
-    - iPadOS 14.2
+    - iOS 14.4
+    - iPadOS 14.4
 - Tested Browsers:
     - iOS / iPadOS
         - Chrome
