@@ -17,8 +17,6 @@
     - [Validation Services](#validation-services)
   - [Manual Testing](#manual-testing)
     - [Unit Testing](#unit-testing)
-    - [User Acceptance Testing (UAT)](#user-acceptance-testing-uat)
-    - [Peer Code Review](#peer-code-review)
     - [Testing undertaken on desktop](#testing-undertaken-on-desktop)
     - [Testing undertaken on tablet and phone devices](#testing-undertaken-on-tablet-and-phone-devices)
   - [Bugs discovered](#bugs-discovered)
