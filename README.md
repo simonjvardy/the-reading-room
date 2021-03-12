@@ -157,13 +157,6 @@ I achieve this by:
 
 ## Design Choices ##
 
-### **Topology** ###
-
-![User - not logged in](static/images/topology.png)
-![User - logged in](static/images/topology.png)
-![User - Admin or Superuser account](static/images/topology.png)
-
-
 ### **Fonts** ###
 
 I've chosen fonts that complement eachother using a combination of serif and sans-serif fonts to lend a feeling of printed words on a page or in a book.
