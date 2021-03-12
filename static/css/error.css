@@ -48,7 +48,7 @@ body {
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
   background: url('../images/bg.jpg') no-repeat;
-  background-clip: text;
+  background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;

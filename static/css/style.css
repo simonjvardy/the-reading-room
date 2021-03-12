@@ -227,6 +227,8 @@ main {
     padding-left: 15px;
     text-decoration: none;
     color: black;
+    margin: 10px;
+    line-height: 2;
 }
 
 .sitemap ul li a:hover {

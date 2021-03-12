@@ -9,8 +9,10 @@
 	"review": "String",
 	"rating": "String",
     "created_by": "String",
-    "favourite": "String",
-	"count": "Integer",
+    "created_date": "Date",
+    "mutator": "string",
+    "mutation": "Date",
+	"purchase_link": "String",
 	"comments": [
 		{
 		    "text": "String",
