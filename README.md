@@ -8,7 +8,7 @@ If a visitor likes a book review, they are able to select a hyperlink to an onli
 ***Please note: This is only to simulate an affiliate marketing business model for educational purposes and in no way endorses or implies a business relationship with the chosen retailers.***
 
 
-![Responsive Layout Screenshots](static/images/am-i-responsive-placeholder.png) 
+![Responsive Layout Screenshots](wireframes/am-i-responsive.png) 
 
 *I created the The Readng Room logo to present an intuitive image based on research of similar contemporary book review blog websites (details of these websites can be found in the Credits section). The muted, almost monochromatic colour scheme was chosen for a clean simple site allowing the reviews to be the main focus.*
 
@@ -725,7 +725,7 @@ The file was then saved in the GitHub repository root directory.
   5.  Download the unique verification file created by Google
   6.  Save the [verification file](googlef750fda78af5a952.html) in the root directory of the GitHub repository
   7.  On Google Search Console, click Verify
-  8.  Once the verification passes, the site is available in the Google Search COnsole dashboard.
+  8.  Once the verification passes, the site is available in the Google Search Console dashboard.
 
 Even though this website has a small number of pages and have navigation links on each page making the Sitemap largely unnecessary, I felt is was a good experience and good practice to add these features in.
 Note: I haven't added a robots.txt file yet but may add this in the future when I understand more about search engine optimisation techniques.
