@@ -33,11 +33,16 @@ The following **validation services** and **linters** were used to check the val
 
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
   - This validator checks the validity of cascading style sheets (css) and (X)HTML documents with style sheets.
-    ![W3c CSS](static/images/readme-content/W3C-css-validdator.png)
+    ![W3c CSS Results Image](static/images/readme-content/W3C-css-validdator.png)
+
+- [W3C Markup Validator](https://validator.w3.org/)
+  - This validator checks the markup validity of Web documents in HTML, XHTML, SMIL, MathML, etc.
+  - The warning relates to a section containing Jinja2 templating language for the Flask flash messages.
+    ![W3C Markup Results image](static/images/readme-content/W3C-html-validdator.png)
 
 - [PEP8 Online validation](http://pep8online.com/checkresult)
   - This linter checks the validity of Python code against the PEP8 requirements
-    ![](static/images/readme-content/pep8-online.png)
+    ![PEP8 results image](static/images/readme-content/pep8-online.png)
 
 - [Chrome DevTools Lighthouse](https://developers.google.com/web/tools/lighthouse)
   - An open-source automated tool for improving webpages by running audits for performance, accessibility, progressive web apps, SEO etc.
