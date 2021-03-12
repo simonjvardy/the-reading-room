@@ -217,6 +217,7 @@ def add_review():
                     "review": request.form.get("review"),
                     "rating": request.form.get("rating"),
                     "created_by": session["user"],
+                    "created_date": datetime.datetime.utcnow(),
                     "purchase_link": link,
                 }
                 mongo.db.book_review.insert_one(review)
@@ -272,8 +273,9 @@ def edit_review(review_id):
                     "isbn": request.form.get("isbn"),
                     "review": request.form.get("review"),
                     "rating": request.form.get("rating"),
-                    "created_by": session["user"],
-                    "purchase_link": link,
+                    "mutator": session["user"],
+                    "mutation": datetime.datetime.utcnow(),
+                    "purchase_link": link
                 }
                 mongo.db.book_review.update_one(
                     {"_id": ObjectId(review_id)},
@@ -624,5 +626,4 @@ def service_unavailable(error):
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=True)
+            port=int(os.environ.get("PORT")))

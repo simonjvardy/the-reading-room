@@ -33,6 +33,9 @@
 
 The following **validation services** and **linters** were used to check the validity of the website code.
 
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+  - This validator checks the validity of cascading style sheets (css) and (X)HTML documents with style sheets.
+    ![W3c CSS](static/images/readme-content/W3C-css-validdator.png)
 
 - [PEP8 Online validation](http://pep8online.com/checkresult)
   - This linter checks the validity of Python code against the PEP8 requirements
@@ -41,14 +44,20 @@ The following **validation services** and **linters** were used to check the val
 - [Chrome DevTools Lighthouse](https://developers.google.com/web/tools/lighthouse)
   - An open-source automated tool for improving webpages by running audits for performance, accessibility, progressive web apps, SEO etc.
 
-    ![](static/images/readme-content/lighthouse-desktop.png)
+  - Desktop Performance
+    ![Desktop Lighthouse](static/images/readme-content/lighthouse-desktop.png)
   
+  - Mobile Performance
+    ![Mobile Lighthouse](static/images/readme-content/lighthouse-mobile.png)
+
+  - The Lighthouse 'Best Practices' score was variable due to the 3rd party image  from Waterstones CDN being caught by the 
+    Chrome DevTools SameSite cookie policy treating the image links under cross-site cookie settings.
 
 ---
 ## Manual Testing ##
 
 ### Unit Testing ###
-[Unit Testing document](testing/alarm-clock-unit-test-plan.pdf) containing:
+[Unit Testing document](testing/MS3-unit-test-plan.pdf) containing:
 - Unit Test scope,
 - The test cases,
 - The pass / fail record for each test case.
@@ -91,37 +100,25 @@ The following **validation services** and **linters** were used to check the val
 ---
 ## Bugs discovered ##
 
-The issue log is managed on the [GitHub Project Issues section](https://github.com/simonjvardy/alarm-clock/issues) using the standard GitHub [bug\_report.md template](https://github.com/simonjvardy/alarm-clock/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
+The issue log is managed on the [GitHub Project Issues section](https://github.com/simonjvardy/the-reading-room/issues) using the standard GitHub [bug\_report.md template](https://github.com/simonjvardy/the-reading-room/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
+and the [features_request.md template](https://github.com/simonjvardy/the-reading-room/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)
 
 
 #### Known Bugs ####
 
-[Issue #36:](https://github.com/simonjvardy/alarm-clock/issues/36)
-- **Unit Test: No audio when testing the alarm sound on iPad**
-  - The audio .mp3 file failed to play when the alarm was triggered on an iPad
-  - This is a known problem described here: [WebKit Bugzilla](https://bugs.webkit.org/show_bug.cgi?id=132691).
-    - HTMLAudioElement doesn't play with Javascript on mobile WebKit due to the Audio.play() can only be triggered by a user interactive click.
-    - This is not going to be fixed as it is developer policy.
-    - Possible alternative solution is to use WebAudio API instead.
 
-[Issue #40](https://github.com/simonjvardy/alarm-clock/issues/40)
-- **Unit Test: The Alarm set / clear button has a random black border in Chrome and Edge browsers**
-  - The Alarm set / clear button displays black solid border when the button is clicked in Chrome and Edge browsers that isn't evident in Firefox or Safari browsers. The black button border disappears when the user mouse-clicks elsewhere on the page.
-  - Dev Tools in both Edge and Chrome have not shown any css classes that are responsible for the border so far. It is suspected that this is a rendering style of the `<button>` element in Chrome and Edge that isn't present in Firefox or Safari.
 
 #### Unsolved Issues ####
 
-[Issue #4](https://github.com/simonjvardy/alarm-clock/issues/4)
-- **Dev: How can I get 2 clocks to show on the same HTML page?**
-  - The project originally needed to display two clocks: one for the user's local time and another showing the local time for a city searched for by the user; calling an API to Google Time Zones.
-    - Creating a clock using the HTML5 canvas element context method proved difficult to achieve as each canvas context method needed to be associated with a unique ID.
-    - Initial testing with async / await functions proved successful on Firefox browsers only; Chrome and Egde both failed to draw on both canvas elements. Further development is needed.
+[Issue #27](https://github.com/simonjvardy/alarm-clock/issues/4)
+- **Feature: How can the user account be set up as a Super User or Admin?**
+  - This is more of a functionality enhancement that an issue.
+  - The users documents contain `is_admin` and `is_super_user` flags on each user account. The default is set to 'off'.
+  - The usefulness of these flags weren't fully made use of in the app for restricting access to certain functions.
+    - Flask-Security may be a better option for creating user role management.
 
-[Issue #11](https://github.com/simonjvardy/alarm-clock/issues/11)
-- **Unit Test: Unable to get the background image to load with async / await functions**
-  - The clock hands would fail to draw if the background image hadn't loaded. Due to the file size of the image asset the the clock function needed to be paused until the imge had fully loaded.
-  - The use of an async / await function to ensure the background image loads before running the clock and provide error handling was an ideal solution
-  - Initial errors caused by the `fetch(image_url)` method caused an `Uncaught TypeError: CanvasRenderingContext2D.drawImage: Argument 1 could not be converted to any of: HTMLImageElement, SVGImageElement, HTMLVideoElement, ImageBitmao.`
-  - The `drawImage` expects its first argument as an image not a url string. A new image needed to be constructed using `let img = new Image();`
-  - Further testing for issue #4 proved that async / await functions could be a solution but further testing and development is needed.
-  - An alternative solution using `.onload` and a `setTimeout()` method proved a simple but successful way to wait for the background image to load.
+[Issue #51:](https://github.com/simonjvardy/the-reading-room/issues/51)
+- **Unit Testing: Favourite button adds same book multiple times**
+  - The book page favourite button functionality current doesn't disable the button after a user has clicked the  button once.
+  - This means the button could be clicked continuously and keep adding the same favourite book to the users collection document
+  - The button styling classes were changed using jQuery on click but this wasn't successfully implemented.

@@ -2,7 +2,9 @@
     "_id": "ObjectId()",
     "title": "String",
     "text": [
-        0: "String",
-        1: "String"
+        {
+            "0": "String",
+            "1": "String"
+        }
     ]
 } 

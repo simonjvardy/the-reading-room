@@ -1,12 +1,17 @@
 {
 	"_id": "ObjectId()",
 	"username": "String",
-	"password": "String",
+    "password": "String",
+    "is_admin": "String",
+    "is_super_user": "String",
 	"date_joined": "Date",
 	"last_login": "Timestamp",
 	"favourites": [
 		{
-		    "book_review_id": "<ObjectId>"
+            "book_review_id": "ObjectId()",
+            "title": "String",
+            "author": "String",
+            "genre": "String"
 		}
 	]
 }

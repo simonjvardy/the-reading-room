@@ -322,11 +322,22 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 
 ### **Features Implemented** ###
 
-### **Responsive Design** ###
+The following section describes the site design and page layouts to demonstrate the features implementsed.
 
- - Responsive mobile first design using a [MaterializeCSS](https://materializecss.com/) framework.
+### **Responsive Front-end Design** ###
 
-### **Topology** ###
+- Responsive mobile first design using a [MaterializeCSS](https://materializecss.com/) framework.
+- Jinja2 templating framework for Python is used to create the site's front-end dynamic content.
+
+### **Back-end Design** ###
+
+- The app is created using Python3 and a Flask framework to render the HTML pages.
+- The site is deployed via a Heroku app linked to a GitHub repository.
+- The dynamic content is served utilising a MongoDB document based database.
+
+### **Site Construction** ###
+
+#### **Topology** ####
 - User Logged Out
 ![Topology Logged Out](wireframes/topology-user-logout.png)
 
@@ -337,12 +348,13 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 ![Topology Admin User](wireframes/topology-admin-user.png)
 
 
+#### **Jinja Template Relationship** ####
+
+- Template inheritance structure: 
+  ![Jinja Template layout diagram](wireframes/jinja-template-layout.png)
+
+
 ### **Page Layout** ###
-
-
-#### **Jinja Template relationship** ####
-
-![Jinja Template layout diagram](wireframes/jinja-template-layout.png)
 
 
 #### **Responsive Navbar** ####
@@ -569,14 +581,14 @@ The final wireframes were created using Balsamiq adapted from the original hand 
     - The pages provide a message to the user and a button to click to return the visitor to the homepage.
 
     - HTTP 404 Error
-        ![HTTP 404 Error](static/images/404-img.png)
+        ![HTTP 404 Error](static/images/readme-content/404-img.png)
         
 
     - HTTP 500 Error
-        ![HTTP 500 Error](static/images/500-img.png)
+        ![HTTP 500 Error](static/images/readme-content/500-img.png)
 
     - HTTP 503 Error
-        ![HTTP 503 Error](static/images/503-img.png)
+        ![HTTP 503 Error](static/images/readme-content/503-img.png)
 
 
 ### **Future Features** ###
@@ -633,6 +645,9 @@ The final wireframes were created using Balsamiq adapted from the original hand 
 | Book Review Text | review | String |   |
 | User Book Rating | rating | String |   |
 | Created By username | create_by | String | username |
+| Created Date | created_date | Date Object | utcnow() |
+| Updated By | mutator | String |  |
+| Updated Date | mutation | Date Object |  |
 | Amazon Purchase Link | purchase_link | String | "https://www.amazon.co.uk/s?k=[book]+[title]+[words]&tag=faketag" |
 | Comments Array | comments | Array |   |
 | Commments Array Object | text | String |   |
@@ -1042,6 +1057,7 @@ The following websites were used as the starting point and inspiration for creat
 - [GeeksForGeeks](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/) Python 404 error handling in Flask
 - [Python.org](https://python.readthedocs.io/en/latest/library/venv.html) Python VENV virtual environments documentation
 - [Codementor](https://www.codementor.io/@prasadsaya/working-with-arrays-in-mongodb-16s303gkd3)
+- [Nielsen BookData](https://nielsenbook.co.uk/) Origin of the book jacket images supplied by Waterstones CDN
 - [Stack Overflow](https://stackoverflow.com/) For help fixing so many thing that fell over on this project!
   - [Stack Overflow](https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches) for ideas and help with GitHub branch naming conventions.
   - [Stack Overflow](https://stackoverflow.com/questions/17575276/how-can-i-print-a-mongodb-list-in-a-jinja2-template) ofr Jinja2 MongoBD list iteration help.
