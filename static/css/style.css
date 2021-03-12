@@ -83,12 +83,6 @@ h3 {
 }
 
 
-/* -------------------------------------BASE Specific Section */
-
-
-
-
-
 /* -------------------------------------BOOK-REVIEW Specific Section */
 
 #book-review{
@@ -147,6 +141,13 @@ a#delete-btn:hover {
 
 .book-review-btn a {
     margin-left: 10px;
+}
+
+
+/* -------------------------------------BOOK-PAGE Specific Section */
+
+#edit-review {
+    margin-bottom: 40px;
 }
 
 
