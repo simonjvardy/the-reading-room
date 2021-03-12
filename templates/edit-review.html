@@ -3,7 +3,7 @@
 
     <h3 class="center-align">Edit Book Review</h3>
 
-    <div class="row card-panel z-depth-3">
+    <div id="edit-review" class="row card-panel z-depth-3">
         <form class="col s12" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
             <!-- Category Dropdown selector -->
             <div class="row">
@@ -13,9 +13,9 @@
                         required>
                         <option value="" disabled>Choose Genre</option>
                         {% for genre in genres %}
-                            {% if genre.genre_name == review.genre_name %}
+                            {% if genre.genre_name == review.genre %}
                                 <option value="{{ genre.genre_name }}"
-                                selected>{{ genre.genre_name }}</option>
+                                    selected>{{ genre.genre_name }}</option>
                             {% else %}
                                 <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
                             {% endif %}

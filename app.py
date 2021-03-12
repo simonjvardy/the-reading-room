@@ -360,6 +360,10 @@ reviews from the book-page comments section
 
 @app.route("/add_comment/<comment_id>", methods=["GET", "POST"])
 def add_comment(comment_id):
+    """
+    Allows the user to add comments to a book review page.
+    Writes the comment to the specific book_review document.
+    """
     if request.method == "POST":
         # collect the add-comment form data and write to MongoDB
         new_comment = {
@@ -388,6 +392,10 @@ Book review favourite button functionality
 
 @app.route("/add_favourite/<favourite_id>")
 def add_favourite(favourite_id):
+    """
+    Allows the user to add a book review to their personal
+    favourites list
+    """
     if session["user"]:
         # grab the session user's details from db
         username = mongo.db.users.find_one(
